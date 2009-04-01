@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FormTwinning</class>
+ <widget class="QWidget" name="FormTwinning">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>593</width>
+    <height>537</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="2">
+    <widget class="QLineEdit" name="lineEditLeftDir"/>
+   </item>
+   <item row="0" column="2">
+    <widget class="QToolButton" name="toolButtonLeftDir">
+     <property name="text">
+      <string>...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>13</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="4">
+    <widget class="QPushButton" name="pushButtonChainMode">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="renamah.qrc">
+       <normaloff>:/images/chained.png</normaloff>:/images/chained.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>16</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="5">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>15</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="6" colspan="2">
+    <widget class="QLineEdit" name="lineEditRightDir"/>
+   </item>
+   <item row="0" column="8">
+    <widget class="QToolButton" name="toolButtonRightDir">
+     <property name="text">
+      <string>...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="labelLeftExtension">
+     <property name="text">
+      <string>Extension:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="2">
+    <widget class="QComboBox" name="comboBoxLeftExtension">
+     <property name="editable">
+      <bool>true</bool>
+     </property>
+     <item>
+      <property name="text">
+       <string>*.avi,*.mkv</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="1" column="6">
+    <widget class="QLabel" name="labelRightExtension">
+     <property name="text">
+      <string>Extension:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="7" colspan="2">
+    <widget class="QComboBox" name="comboBoxRightExtension">
+     <property name="editable">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3">
+    <widget class="QTreeView" name="treeViewLeft">
+     <property name="editTriggers">
+      <set>QAbstractItemView::EditKeyPressed</set>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="verticalScrollMode">
+      <enum>QAbstractItemView::ScrollPerPixel</enum>
+     </property>
+     <property name="rootIsDecorated">
+      <bool>false</bool>
+     </property>
+     <property name="itemsExpandable">
+      <bool>false</bool>
+     </property>
+     <property name="headerHidden">
+      <bool>true</bool>
+     </property>
+     <property name="expandsOnDoubleClick">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3" colspan="3">
+    <widget class="TwinningWidget" name="widgetTwinning" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>100</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>100</width>
+       <height>16777215</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="6" colspan="3">
+    <widget class="QTreeView" name="treeViewRight">
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="verticalScrollMode">
+      <enum>QAbstractItemView::ScrollPerPixel</enum>
+     </property>
+     <property name="rootIsDecorated">
+      <bool>false</bool>
+     </property>
+     <property name="itemsExpandable">
+      <bool>false</bool>
+     </property>
+     <property name="headerHidden">
+      <bool>true</bool>
+     </property>
+     <property name="expandsOnDoubleClick">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="3">
+    <widget class="QLabel" name="labelLeftStatus">
+     <property name="text">
+      <string>Status</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="6" colspan="3">
+    <widget class="QLabel" name="labelRightStatus">
+     <property name="text">
+      <string>Status</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="9">
+    <widget class="QPushButton" name="pushButtonProcess">
+     <property name="text">
+      <string>process</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TwinningWidget</class>
+   <extends>QWidget</extends>
+   <header>twinning_widget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="renamah.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WidgetSimple</class>
+ <widget class="QWidget" name="WidgetSimple">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>676</width>
+    <height>571</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_6">
+   <item row="0" column="0">
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="childrenCollapsible">
+      <bool>false</bool>
+     </property>
+     <widget class="QWidget" name="widgetFiles" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_5">
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item row="0" column="0">
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0" colspan="2">
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QPushButton" name="pushButtonProcess">
+             <property name="text">
+              <string>Process</string>
+             </property>
+             <property name="icon">
+              <iconset resource="renamah.qrc">
+               <normaloff>:/images/process.png</normaloff>:/images/process.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="comboBoxOperation">
+             <property name="sizeAdjustPolicy">
+              <enum>QComboBox::AdjustToContents</enum>
+             </property>
+             <item>
+              <property name="text">
+               <string>Rename files</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Copy renamed files in</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Move renamed files in</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Create symbolic links in</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEditDestination">
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="toolButtonDestination">
+             <property name="text">
+              <string>...</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="0" colspan="2">
+          <widget class="QFrame" name="frameOperation">
+           <property name="frameShape">
+            <enum>QFrame::HLine</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0" rowspan="7">
+          <widget class="QTreeView" name="treeViewFiles">
+           <property name="acceptDrops">
+            <bool>true</bool>
+           </property>
+           <property name="dragEnabled">
+            <bool>true</bool>
+           </property>
+           <property name="dragDropMode">
+            <enum>QAbstractItemView::InternalMove</enum>
+           </property>
+           <property name="alternatingRowColors">
+            <bool>true</bool>
+           </property>
+           <property name="selectionMode">
+            <enum>QAbstractItemView::ExtendedSelection</enum>
+           </property>
+           <property name="rootIsDecorated">
+            <bool>false</bool>
+           </property>
+           <property name="itemsExpandable">
+            <bool>false</bool>
+           </property>
+           <property name="animated">
+            <bool>true</bool>
+           </property>
+           <property name="allColumnsShowFocus">
+            <bool>true</bool>
+           </property>
+           <property name="expandsOnDoubleClick">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1" colspan="2">
+          <widget class="QPushButton" name="pushButtonAddFiles">
+           <property name="toolTip">
+            <string>Add some files...</string>
+           </property>
+           <property name="text">
+            <string>Add...</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1" colspan="2">
+          <widget class="QPushButton" name="pushButtonRemoveFiles">
+           <property name="toolTip">
+            <string>Remove selected files</string>
+           </property>
+           <property name="text">
+            <string>Remove</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1" colspan="2">
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>258</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="8" column="1" colspan="2">
+          <widget class="QLabel" name="labelFileCount">
+           <property name="frameShape">
+            <enum>QFrame::Panel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Sunken</enum>
+           </property>
+           <property name="text">
+            <string notr="true">13 files</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1" colspan="2">
+          <widget class="QPushButton" name="pushButtonSort">
+           <property name="text">
+            <string>Sort by</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QPushButton" name="pushButtonUpFiles">
+           <property name="toolTip">
+            <string>Up selected files</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="renamah.qrc">
+             <normaloff>:/images/up.png</normaloff>:/images/up.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="2">
+          <widget class="QPushButton" name="pushButtonDownFiles">
+           <property name="toolTip">
+            <string>Down selected files</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="renamah.qrc">
+             <normaloff>:/images/down.png</normaloff>:/images/down.png</iconset>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QTabWidget" name="tabWidgetOperations">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tabExtensionPolicy">
+       <attribute name="title">
+        <string>Extension policy</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QScrollArea" name="scrollArea">
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>652</width>
+             <height>57</height>
+            </rect>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_2">
+            <property name="margin">
+             <number>0</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="WidgetExtensionPolicy" name="widgetExtensionPolicy" native="true"/>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabFilters">
+       <attribute name="title">
+        <string>Filters</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="WidgetFilters" name="widgetFilters" native="true"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabEnders">
+       <attribute name="title">
+        <string>Finalizers</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_18">
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="WidgetActions" name="widgetFinalizers" native="true"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+  <action name="actionSortByName">
+   <property name="text">
+    <string>by name</string>
+   </property>
+   <property name="toolTip">
+    <string>Sort files by name</string>
+   </property>
+  </action>
+  <action name="actionSortByModificationDate">
+   <property name="text">
+    <string>by modification date</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>WidgetExtensionPolicy</class>
+   <extends>QWidget</extends>
+   <header>widget_extension_policy.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>WidgetActions</class>
+   <extends>QWidget</extends>
+   <header>widget_actions.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>WidgetFilters</class>
+   <extends>QWidget</extends>
+   <header>widget_filters.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="renamah.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,6 @@
+ADD_SUBDIRECTORY(replacefilter)
+ADD_SUBDIRECTORY(casefilter)
+ADD_SUBDIRECTORY(numberingfilter)
+ADD_SUBDIRECTORY(cutterfilter)
+ADD_SUBDIRECTORY(datefilter)
+ADD_SUBDIRECTORY(commandaction)

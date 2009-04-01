@@ -1,0 +1,39 @@
+<RCC>
+    <qresource prefix="/" >
+        <file>images/about.png</file>
+        <file>images/away.png</file>
+        <file>images/blue-led.png</file>
+        <file>images/ceb.png</file>
+        <file>images/clear.png</file>
+        <file>images/here.png</file>
+        <file>images/no_update.png</file>
+        <file>images/red-led.png</file>
+        <file>images/tray-myself.png</file>
+        <file>images/tray-neutral.png</file>
+        <file>images/tray-new.png</file>
+        <file>images/update.png</file>
+        <file>images/yellow-led.png</file>
+		<file>images/sounds.png</file>
+		<file>images/logs.png</file>
+		<file>images/warningo.png</file>
+		<file>images/tabs.png</file>
+		<file>images/transparent.png</file>
+		<file>images/links.png</file>
+		<file>images/connect.png</file>
+		<file>images/add.png</file>
+		<file>images/remove.png</file>
+        <file>images/down.png</file>
+        <file>images/up.png</file>
+        <file>images/chained.png</file>
+        <file>images/unchained.png</file>
+		<file>images/filter-on.png</file>
+		<file>images/filter-off.png</file>
+		<file>images/filter-on-single.png</file>
+		<file>images/filter-single-on.png</file>
+		<file>images/filter-single-off.png</file>
+		<file>images/process.png</file>
+		<file>images/hand.png</file>
+		<file>images/automatic.png</file>
+		<file>images/blank.png</file>
+    </qresource>
+</RCC>

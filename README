@@ -1,0 +1,47 @@
+--------
+WELCOME!
+--------
+
+Renamah is a(nother) batch renamer written in C++.
+
+The effort is oriented toward:
+
+    * ergonomy
+    * the crossplatform aspect (Qt4)
+    * modularity (plugin system for filters)
+
+Featuring:
+
+    * cascading filters: replace, numbering, cutter, case manipulations, etc
+    * cascading finalizers: launching of a system command for each files, etc
+    * undo system (TODO)
+    * internationalization (French and English for now)
+
+--------------------
+INSTALL INSTRUCTIONS
+--------------------
+
+In the renamah root directory, type:
+
+cmake .
+make
+sudo make install
+
+------------
+DEPENDENCIES
+------------
+
+To be successfully compiled, Renamah depends on some libraries:
+
+- libqt4-core
+- libqt4-gui
+
+------------
+THE END WORD
+------------
+
+You can find Renamah homepage at: http://code.google.com/p/renamah
+
+Thank you for using it!
+
+	Guillaume Denry <guillaume.denry@gmail.com>
