@@ -46,6 +46,8 @@ WidgetSimple::WidgetSimple(QWidget *parent)
 			this, SLOT(filesModelReset()));
 	connect(&FileModel::instance(), SIGNAL(dropDone()),
 			this, SLOT(filesDropDone()));
+	connect(treeViewFiles->selectionModel(), SIGNAL(selectionChanged(const QItemSelection &, const QItemSelection &)),
+			this, SLOT(treeViewFilesSelectionChanged(const QItemSelection &, const QItemSelection &)));
 
 	treeViewFiles->installEventFilter(this);
 	treeViewFiles->viewport()->installEventFilter(this);
@@ -72,32 +74,6 @@ void WidgetSimple::initAfterPluginLoaded() {
 	// TEMP : Fill with some files
 	foreach (const QFileInfo &fileInfo, QDir::home().entryInfoList(QDir::Files))
 		FileModel::instance().addFile(fileInfo.absoluteFilePath());
-}
-
-void WidgetSimple::on_pushButtonAddFiles_clicked() {
-    QStringList files = QFileDialog::getOpenFileNames(this, tr("Pick a file"),
-													  QDir::home().absolutePath());
-    foreach (const QString &file, files)
-		FileModel::instance().addFile(file);
-}
-
-void WidgetSimple::on_pushButtonRemoveFiles_clicked() {
-	QModelIndexList list = treeViewFiles->selectionModel()->selectedRows();
-	if (!list.count())
-		return;
-
-	if (QMessageBox::question(this, tr("Confirmation"), tr("Do you really want to remove this files?"),
-							  QMessageBox::Yes | QMessageBox::No) != QMessageBox::Yes)
-		return;
-
-	QMap<int, int> rowsAndHeights;
-
-	foreach (const QItemSelectionRange &range, treeViewFiles->selectionModel()->selection())
-		rowsAndHeights.insert(range.top(), range.height());
-
-	QList<int> rows = rowsAndHeights.keys();
-	for (int i = rows.count() - 1; i >= 0; --i)
-		FileModel::instance().removeRows(rows[i], rowsAndHeights[rows[i]], QModelIndex());
 }
 
 void WidgetSimple::on_pushButtonProcess_clicked() {
@@ -234,7 +210,58 @@ void WidgetSimple::filesDropDone() {
 	}
 }
 
-void WidgetSimple::on_pushButtonUpFiles_clicked() {
+void WidgetSimple::on_actionSortByName_triggered() {
+	FileModel::instance().sort(FileModel::SortByName);
+}
+
+void WidgetSimple::on_actionSortByModificationDate_triggered() {
+	FileModel::instance().sort(FileModel::SortByModificationDate);
+}
+
+void WidgetSimple::on_actionRemoveSelectedFiles_triggered() {
+	QModelIndexList list = treeViewFiles->selectionModel()->selectedRows();
+	if (!list.count())
+		return;
+
+	if (QMessageBox::question(this, tr("Confirmation"), tr("Do you really want to remove this files?"),
+							  QMessageBox::Yes | QMessageBox::No) != QMessageBox::Yes)
+		return;
+
+	QMap<int, int> rowsAndHeights;
+
+	foreach (const QItemSelectionRange &range, treeViewFiles->selectionModel()->selection())
+		rowsAndHeights.insert(range.top(), range.height());
+
+	QList<int> rows = rowsAndHeights.keys();
+	for (int i = rows.count() - 1; i >= 0; --i)
+		FileModel::instance().removeRows(rows[i], rowsAndHeights[rows[i]], QModelIndex());
+}
+
+void WidgetSimple::on_actionAddFiles_triggered() {
+    QStringList files = QFileDialog::getOpenFileNames(this, tr("Pick some files"),
+													  QDir::home().absolutePath());
+    foreach (const QString &file, files)
+		FileModel::instance().addFile(file);
+}
+
+void WidgetSimple::contextMenuEvent(QContextMenuEvent *event) {
+	QMenu popupMenu;
+	popupMenu.addAction(actionAddFiles);
+	if (treeViewFiles->selectionModel()->selectedRows().count()) {
+		popupMenu.addAction(actionRemoveSelectedFiles);
+		popupMenu.addSeparator();
+		popupMenu.addAction(actionUpSelectedFiles);
+		popupMenu.addAction(actionDownSelectedFiles);
+	}
+
+	popupMenu.exec(event->globalPos());
+}
+
+void WidgetSimple::treeViewFilesSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
+	pushButtonRemoveFiles->setEnabled(treeViewFiles->selectionModel()->selectedRows().count());
+}
+
+void WidgetSimple::on_actionUpSelectedFiles_triggered() {
 	QModelIndexList list = treeViewFiles->selectionModel()->selectedRows();
 	if (list.count()) {
 		FileModel::instance().upRows(list);
@@ -242,18 +269,10 @@ void WidgetSimple::on_pushButtonUpFiles_clicked() {
 	}
 }
 
-void WidgetSimple::on_pushButtonDownFiles_clicked() {
+void WidgetSimple::on_actionDownSelectedFiles_triggered() {
 	QModelIndexList list = treeViewFiles->selectionModel()->selectedRows();
 	if (list.count()) {
 		FileModel::instance().downRows(list);
 		filesDropDone();
 	}
-}
-
-void WidgetSimple::on_actionSortByName_triggered() {
-	FileModel::instance().sort(FileModel::SortByName);
-}
-
-void WidgetSimple::on_actionSortByModificationDate_triggered() {
-	FileModel::instance().sort(FileModel::SortByModificationDate);
 }

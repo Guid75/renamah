@@ -141,17 +141,28 @@
             <string>Add some files...</string>
            </property>
            <property name="text">
-            <string>Add...</string>
+            <string>Add</string>
+           </property>
+           <property name="icon">
+            <iconset resource="renamah.qrc">
+             <normaloff>:/images/add.png</normaloff>:/images/add.png</iconset>
            </property>
           </widget>
          </item>
          <item row="3" column="1" colspan="2">
           <widget class="QPushButton" name="pushButtonRemoveFiles">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="toolTip">
             <string>Remove selected files</string>
            </property>
            <property name="text">
             <string>Remove</string>
+           </property>
+           <property name="icon">
+            <iconset resource="renamah.qrc">
+             <normaloff>:/images/remove.png</normaloff>:/images/remove.png</iconset>
            </property>
           </widget>
          </item>
@@ -303,6 +314,54 @@
   <action name="actionSortByModificationDate">
    <property name="text">
     <string>by modification date</string>
+   </property>
+  </action>
+  <action name="actionRemoveSelectedFiles">
+   <property name="icon">
+    <iconset resource="renamah.qrc">
+     <normaloff>:/images/remove.png</normaloff>:/images/remove.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Remove</string>
+   </property>
+   <property name="toolTip">
+    <string>Remove selected files</string>
+   </property>
+  </action>
+  <action name="actionAddFiles">
+   <property name="icon">
+    <iconset resource="renamah.qrc">
+     <normaloff>:/images/add.png</normaloff>:/images/add.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Add</string>
+   </property>
+   <property name="toolTip">
+    <string>Add files</string>
+   </property>
+  </action>
+  <action name="actionUpSelectedFiles">
+   <property name="icon">
+    <iconset resource="renamah.qrc">
+     <normaloff>:/images/up.png</normaloff>:/images/up.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Up</string>
+   </property>
+   <property name="toolTip">
+    <string>Up selected files</string>
+   </property>
+  </action>
+  <action name="actionDownSelectedFiles">
+   <property name="icon">
+    <iconset resource="renamah.qrc">
+     <normaloff>:/images/down.png</normaloff>:/images/down.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Down</string>
+   </property>
+   <property name="toolTip">
+    <string>Down selected files</string>
    </property>
   </action>
  </widget>
