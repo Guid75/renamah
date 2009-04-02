@@ -32,12 +32,12 @@
 <context>
     <name>FileModel</name>
     <message>
-        <location filename="../file_model.cpp" line="90"/>
+        <location filename="../file_model.cpp" line="92"/>
         <source>Original</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../file_model.cpp" line="91"/>
+        <location filename="../file_model.cpp" line="93"/>
         <source>Renamed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -281,7 +281,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_modifiers.ui" line="328"/>
+        <location filename="../widget_modifiers.ui" line="334"/>
         <source>Click to add</source>
         <translation type="unfinished"></translation>
     </message>
@@ -289,37 +289,37 @@
 <context>
     <name>WidgetSimple</name>
     <message>
-        <location filename="../widget_simple.cpp" line="71"/>
+        <location filename="../widget_simple.cpp" line="78"/>
         <source>Pick a file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.cpp" line="82"/>
+        <location filename="../widget_simple.cpp" line="89"/>
         <source>Confirmation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.cpp" line="82"/>
+        <location filename="../widget_simple.cpp" line="89"/>
         <source>Do you really want to remove this files?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.cpp" line="108"/>
+        <location filename="../widget_simple.cpp" line="115"/>
         <source>Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.cpp" line="108"/>
+        <location filename="../widget_simple.cpp" line="115"/>
         <source>Do you really want to start the rename process?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.cpp" line="152"/>
+        <location filename="../widget_simple.cpp" line="159"/>
         <source>Choose a destination directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../widget_simple.cpp" line="162"/>
+        <location filename="../widget_simple.cpp" line="169"/>
         <source>%n files</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -356,28 +356,68 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="126"/>
+        <location filename="../widget_simple.ui" line="141"/>
+        <source>Add some files...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget_simple.ui" line="144"/>
         <source>Add...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="133"/>
+        <location filename="../widget_simple.ui" line="151"/>
+        <source>Remove selected files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget_simple.ui" line="154"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="176"/>
-        <source>Extension policy</source>
+        <location filename="../widget_simple.ui" line="190"/>
+        <source>Sort by</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget_simple.ui" line="197"/>
+        <source>Up selected files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../widget_simple.ui" line="211"/>
+        <source>Down selected files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget_simple.ui" line="232"/>
+        <source>Extension policy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget_simple.ui" line="267"/>
         <source>Filters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="224"/>
+        <location filename="../widget_simple.ui" line="280"/>
         <source>Finalizers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget_simple.ui" line="297"/>
+        <source>by name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget_simple.ui" line="300"/>
+        <source>Sort files by name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget_simple.ui" line="305"/>
+        <source>by modification date</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
