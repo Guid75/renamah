@@ -98,10 +98,11 @@ QVariant FileModel::headerData(int section, Qt::Orientation orientation, int rol
 
 void FileModel::addFile(const QString &filePath)
 {
-     // TODO: check for already existing file
+	 if (_originals.indexOf(filePath) >= 0)
+		 return;
 
      beginInsertRows(QModelIndex(), _originals.count(), _originals.count());
-     _originals << filePath;
+	 _originals << filePath;
      endInsertRows();
 	 invalidate();
 }
