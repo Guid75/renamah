@@ -31,10 +31,6 @@
 <context>
     <name>CaseFilterFactory</name>
     <message>
-        <source>Case filter</source>
-        <translation type="obsolete">FIltre de casse</translation>
-    </message>
-    <message>
         <location filename="../case_filter_factory.cpp" line="12"/>
         <source>Case</source>
         <translation>Casse</translation>
@@ -76,29 +72,6 @@
         <location filename="../config_widget.ui" line="55"/>
         <source>Don&apos;t lower other chars</source>
         <translation>Pas de conversion en minuscule des autres caractères</translation>
-    </message>
-</context>
-<context>
-    <name>QObject</name>
-    <message>
-        <source>lower case</source>
-        <comment>case counts!</comment>
-        <translation type="obsolete">minuscule</translation>
-    </message>
-    <message>
-        <source>UPPER CASE</source>
-        <comment>case counts!</comment>
-        <translation type="obsolete">MAJUSCULE</translation>
-    </message>
-    <message>
-        <source>First letter in upcase</source>
-        <comment>case counts!</comment>
-        <translation type="obsolete">Première lettre en majuscule</translation>
-    </message>
-    <message>
-        <source>Words First Letter In Upcase</source>
-        <comment>case counts!</comment>
-        <translation type="obsolete">Première Lettre Des Mots En Majuscule</translation>
     </message>
 </context>
 </TS>

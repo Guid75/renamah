@@ -265,10 +265,6 @@
 <context>
     <name>NumberingFilterFactory</name>
     <message>
-        <source>Numbering filter</source>
-        <translation type="obsolete">Filtre de numérotation</translation>
-    </message>
-    <message>
         <location filename="../numbering_filter_factory.cpp" line="12"/>
         <source>Numbering</source>
         <translation>Numérotation</translation>

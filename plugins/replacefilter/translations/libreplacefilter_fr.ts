@@ -42,10 +42,6 @@
 <context>
     <name>ReplaceFilterFactory</name>
     <message>
-        <source>Replace filter</source>
-        <translation type="obsolete">Filtre de remplacement</translation>
-    </message>
-    <message>
         <location filename="../replace_filter_factory.cpp" line="12"/>
         <source>Replacement</source>
         <translation>Remplacement</translation>

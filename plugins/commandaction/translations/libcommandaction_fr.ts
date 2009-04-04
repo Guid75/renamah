@@ -4,10 +4,6 @@
 <context>
     <name>CommandActionFactory</name>
     <message>
-        <source>Command action</source>
-        <translation type="obsolete">Action commande</translation>
-    </message>
-    <message>
         <location filename="../command_action_factory.cpp" line="12"/>
         <source>Command</source>
         <translation>Commande</translation>

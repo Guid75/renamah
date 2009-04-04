@@ -50,10 +50,6 @@
 <context>
     <name>CutterFilterFactory</name>
     <message>
-        <source>Cutter filter</source>
-        <translation type="obsolete">Filtre de coupure</translation>
-    </message>
-    <message>
         <location filename="../cutter_filter_factory.cpp" line="12"/>
         <source>Cutter</source>
         <translation>Coupure</translation>
