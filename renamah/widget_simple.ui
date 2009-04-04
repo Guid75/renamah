@@ -141,7 +141,7 @@
             <string>Add some files...</string>
            </property>
            <property name="text">
-            <string>Add</string>
+            <string/>
            </property>
            <property name="icon">
             <iconset resource="renamah.qrc">
@@ -158,7 +158,7 @@
             <string>Remove selected files</string>
            </property>
            <property name="text">
-            <string>Remove</string>
+            <string/>
            </property>
            <property name="icon">
             <iconset resource="renamah.qrc">
@@ -204,6 +204,9 @@
          </item>
          <item row="5" column="1">
           <widget class="QPushButton" name="pushButtonUpFiles">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="toolTip">
             <string>Up selected files</string>
            </property>
@@ -218,6 +221,9 @@
          </item>
          <item row="5" column="2">
           <widget class="QPushButton" name="pushButtonDownFiles">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="toolTip">
             <string>Down selected files</string>
            </property>

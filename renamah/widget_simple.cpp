@@ -259,6 +259,8 @@ void WidgetSimple::contextMenuEvent(QContextMenuEvent *event) {
 
 void WidgetSimple::treeViewFilesSelectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
 	pushButtonRemoveFiles->setEnabled(treeViewFiles->selectionModel()->selectedRows().count());
+	pushButtonUpFiles->setEnabled(treeViewFiles->selectionModel()->selectedRows().count());
+	pushButtonDownFiles->setEnabled(treeViewFiles->selectionModel()->selectedRows().count());
 }
 
 void WidgetSimple::on_actionUpSelectedFiles_triggered() {
