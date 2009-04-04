@@ -52,6 +52,8 @@ WidgetSimple::WidgetSimple(QWidget *parent)
 	treeViewFiles->installEventFilter(this);
 	treeViewFiles->viewport()->installEventFilter(this);
 
+	labelAddFiles->installEventFilter(this);
+
 	on_comboBoxOperation_currentIndexChanged(0);
 
 	tabWidgetOperations->setCurrentWidget(tabFilters);
@@ -74,6 +76,9 @@ void WidgetSimple::initAfterPluginLoaded() {
 	// TEMP : Fill with some files
 	foreach (const QFileInfo &fileInfo, QDir::home().entryInfoList(QDir::Files))
 		FileModel::instance().addFile(fileInfo.absoluteFilePath());
+
+	if (FileModel::instance().rowCount())
+		stackedWidgetFiles->setCurrentWidget(pageFiles);
 }
 
 void WidgetSimple::on_pushButtonProcess_clicked() {
@@ -158,6 +163,8 @@ bool WidgetSimple::eventFilter(QObject *watched, QEvent *event) {
 		QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
 		if (mouseEvent->button() == Qt::LeftButton)
 			modifyCurrentFileName();
+	} else if (watched == labelAddFiles && event->type() == QEvent::MouseButtonPress) {
+		actionAddFiles->trigger();
 	}
 	return QWidget::eventFilter(watched, event);
 }
@@ -235,6 +242,9 @@ void WidgetSimple::on_actionRemoveSelectedFiles_triggered() {
 	QList<int> rows = rowsAndHeights.keys();
 	for (int i = rows.count() - 1; i >= 0; --i)
 		FileModel::instance().removeRows(rows[i], rowsAndHeights[rows[i]], QModelIndex());
+
+	if (!FileModel::instance().rowCount())
+		stackedWidgetFiles->setCurrentWidget(pageNoFiles);
 }
 
 void WidgetSimple::on_actionAddFiles_triggered() {
@@ -242,6 +252,9 @@ void WidgetSimple::on_actionAddFiles_triggered() {
 													  QDir::home().absolutePath());
     foreach (const QString &file, files)
 		FileModel::instance().addFile(file);
+
+	if (FileModel::instance().rowCount())
+		stackedWidgetFiles->setCurrentWidget(pageFiles);
 }
 
 void WidgetSimple::contextMenuEvent(QContextMenuEvent *event) {
