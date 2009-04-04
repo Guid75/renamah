@@ -132,10 +132,6 @@
         <translation>&amp;Sauver le profile...</translation>
     </message>
     <message>
-        <source>Save profile...</source>
-        <translation type="obsolete">Sauve le profile...</translation>
-    </message>
-    <message>
         <location filename="../main_window.cpp" line="124"/>
         <source>Choose a profile to load</source>
         <translation>Choisissez un profile à charger</translation>
@@ -198,10 +194,6 @@
         <location filename="../widget_extension_policy.cpp" line="123"/>
         <source>Do you really want to return to default extension policy settings?</source>
         <translation>Souhaitez-vous vraiment revenir à la politique d&apos;extension par défaut ?</translation>
-    </message>
-    <message>
-        <source>Do you really want to return to return to default extension policy settings?</source>
-        <translation type="obsolete">Voulez-vous vraiment revenir à la politique d&apos;extension par défaut ?</translation>
     </message>
     <message>
         <location filename="../widget_extension_policy.ui" line="13"/>
@@ -290,14 +282,6 @@
         <translation>Voulez-vous réellement supprimer ce filtre ?</translation>
     </message>
     <message>
-        <source>Title</source>
-        <translation type="obsolete">Titre</translation>
-    </message>
-    <message>
-        <source>Modifier description</source>
-        <translation type="obsolete">Description du modificateur</translation>
-    </message>
-    <message>
         <location filename="../widget_modifiers.ui" line="334"/>
         <source>Click to add</source>
         <translation>Cliquez pour ajouter</translation>
@@ -306,42 +290,42 @@
 <context>
     <name>WidgetSimple</name>
     <message>
-        <location filename="../widget_simple.cpp" line="78"/>
-        <source>Pick a file</source>
-        <translation>Choisissez un fichier</translation>
-    </message>
-    <message>
-        <location filename="../widget_simple.cpp" line="89"/>
+        <location filename="../widget_simple.cpp" line="226"/>
         <source>Confirmation</source>
         <translation>Confirmation</translation>
     </message>
     <message>
-        <location filename="../widget_simple.cpp" line="89"/>
+        <location filename="../widget_simple.cpp" line="226"/>
         <source>Do you really want to remove this files?</source>
         <translation>Êtes-vous certain de vouloir supprimer ces fichiers ?</translation>
     </message>
     <message>
-        <location filename="../widget_simple.cpp" line="115"/>
+        <location filename="../widget_simple.cpp" line="91"/>
         <source>Are you sure?</source>
         <translation>Êtes-vous certain ?</translation>
     </message>
     <message>
-        <location filename="../widget_simple.cpp" line="115"/>
+        <location filename="../widget_simple.cpp" line="91"/>
         <source>Do you really want to start the rename process?</source>
         <translation>Voulez-vous vraiment démarrer le processus de renommage ?</translation>
     </message>
     <message>
-        <location filename="../widget_simple.cpp" line="159"/>
+        <location filename="../widget_simple.cpp" line="135"/>
         <source>Choose a destination directory</source>
         <translation>Choisissez un répertoire de destination</translation>
     </message>
     <message numerus="yes">
-        <location filename="../widget_simple.cpp" line="169"/>
+        <location filename="../widget_simple.cpp" line="145"/>
         <source>%n files</source>
         <translation>
             <numerusform>%n fichier</numerusform>
             <numerusform>%n fichiers</numerusform>
         </translation>
+    </message>
+    <message>
+        <location filename="../widget_simple.cpp" line="241"/>
+        <source>Pick some files</source>
+        <translation>Choisissez des fichiers</translation>
     </message>
     <message>
         <location filename="../widget_simple.ui" line="43"/>
@@ -379,66 +363,80 @@
         <translation>Ajouter des fichiers...</translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="144"/>
-        <source>Add...</source>
-        <translation>Ajouter...</translation>
+        <location filename="../widget_simple.ui" line="331"/>
+        <source>&amp;Remove</source>
+        <translation>&amp;Supprimer</translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="151"/>
+        <location filename="../widget_simple.ui" line="343"/>
+        <source>&amp;Add</source>
+        <translation>&amp;Ajouter</translation>
+    </message>
+    <message>
+        <location filename="../widget_simple.ui" line="346"/>
+        <source>Add files</source>
+        <translation>Ajouter des fichiers</translation>
+    </message>
+    <message>
+        <location filename="../widget_simple.ui" line="355"/>
+        <source>&amp;Up</source>
+        <translation>&amp;Monter</translation>
+    </message>
+    <message>
+        <location filename="../widget_simple.ui" line="367"/>
+        <source>&amp;Down</source>
+        <translation>&amp;Descendre</translation>
+    </message>
+    <message>
+        <location filename="../widget_simple.ui" line="158"/>
+        <location filename="../widget_simple.ui" line="334"/>
         <source>Remove selected files</source>
         <translation>Supprimer les fichiers sélectionnés</translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="297"/>
+        <location filename="../widget_simple.ui" line="314"/>
         <source>by name</source>
         <translation>par nom</translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="300"/>
+        <location filename="../widget_simple.ui" line="317"/>
         <source>Sort files by name</source>
         <translation>Trier les fichier par nom</translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="305"/>
+        <location filename="../widget_simple.ui" line="322"/>
         <source>by modification date</source>
         <translation>par date de modification</translation>
     </message>
     <message>
-        <source>Add files...</source>
-        <translation type="obsolete">Ajouter des fichiers...</translation>
-    </message>
-    <message>
-        <location filename="../widget_simple.ui" line="154"/>
-        <source>Remove</source>
-        <translation>Supprimer</translation>
-    </message>
-    <message>
-        <location filename="../widget_simple.ui" line="190"/>
+        <location filename="../widget_simple.ui" line="201"/>
         <source>Sort by</source>
         <translation>Trier par</translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="197"/>
+        <location filename="../widget_simple.ui" line="211"/>
+        <location filename="../widget_simple.ui" line="358"/>
         <source>Up selected files</source>
         <translation>Monter les fichiers sélectionnés</translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="211"/>
+        <location filename="../widget_simple.ui" line="228"/>
+        <location filename="../widget_simple.ui" line="370"/>
         <source>Down selected files</source>
         <translation>Descendre les fichiers sélectionnés</translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="232"/>
+        <location filename="../widget_simple.ui" line="249"/>
         <source>Extension policy</source>
         <translation>Politique d&apos;extension</translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="267"/>
+        <location filename="../widget_simple.ui" line="284"/>
         <source>Filters</source>
         <translation>Filtres</translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="280"/>
+        <location filename="../widget_simple.ui" line="297"/>
         <source>Finalizers</source>
         <translation>Finaliseurs</translation>
     </message>

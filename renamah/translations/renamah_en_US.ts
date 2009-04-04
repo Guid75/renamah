@@ -289,41 +289,41 @@
 <context>
     <name>WidgetSimple</name>
     <message>
-        <location filename="../widget_simple.cpp" line="78"/>
-        <source>Pick a file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../widget_simple.cpp" line="89"/>
+        <location filename="../widget_simple.cpp" line="226"/>
         <source>Confirmation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.cpp" line="89"/>
+        <location filename="../widget_simple.cpp" line="226"/>
         <source>Do you really want to remove this files?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.cpp" line="115"/>
+        <location filename="../widget_simple.cpp" line="91"/>
         <source>Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.cpp" line="115"/>
+        <location filename="../widget_simple.cpp" line="91"/>
         <source>Do you really want to start the rename process?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.cpp" line="159"/>
+        <location filename="../widget_simple.cpp" line="135"/>
         <source>Choose a destination directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../widget_simple.cpp" line="169"/>
+        <location filename="../widget_simple.cpp" line="145"/>
         <source>%n files</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <location filename="../widget_simple.cpp" line="241"/>
+        <source>Pick some files</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../widget_simple.ui" line="43"/>
@@ -361,63 +361,81 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="144"/>
-        <source>Add...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../widget_simple.ui" line="151"/>
+        <location filename="../widget_simple.ui" line="158"/>
+        <location filename="../widget_simple.ui" line="334"/>
         <source>Remove selected files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="154"/>
-        <source>Remove</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../widget_simple.ui" line="190"/>
+        <location filename="../widget_simple.ui" line="201"/>
         <source>Sort by</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="197"/>
+        <location filename="../widget_simple.ui" line="211"/>
+        <location filename="../widget_simple.ui" line="358"/>
         <source>Up selected files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="211"/>
+        <location filename="../widget_simple.ui" line="228"/>
+        <location filename="../widget_simple.ui" line="370"/>
         <source>Down selected files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="232"/>
+        <location filename="../widget_simple.ui" line="249"/>
         <source>Extension policy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="267"/>
+        <location filename="../widget_simple.ui" line="284"/>
         <source>Filters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="280"/>
+        <location filename="../widget_simple.ui" line="297"/>
         <source>Finalizers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="297"/>
+        <location filename="../widget_simple.ui" line="314"/>
         <source>by name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="300"/>
+        <location filename="../widget_simple.ui" line="317"/>
         <source>Sort files by name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="305"/>
+        <location filename="../widget_simple.ui" line="322"/>
         <source>by modification date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget_simple.ui" line="331"/>
+        <source>&amp;Remove</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget_simple.ui" line="343"/>
+        <source>&amp;Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget_simple.ui" line="346"/>
+        <source>Add files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget_simple.ui" line="355"/>
+        <source>&amp;Up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget_simple.ui" line="367"/>
+        <source>&amp;Down</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -10,6 +10,8 @@ include_directories(
 
 option (UPDATE_TRANSLATIONS "Update source translation translations/*.ts files (WARNING: make clean will delete the source .ts files! Danger!)"
   "off")
+option (NO_OBSOLETE_TRANSLATIONS "Remove all obsolete translations in *.ts files. This options will work only when UPDATE_TRANSLATIONS i on"
+  "off")
 
 ADD_SUBDIRECTORY(libcore)
 ADD_SUBDIRECTORY(plugins)
