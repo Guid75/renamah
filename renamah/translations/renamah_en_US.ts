@@ -289,39 +289,39 @@
 <context>
     <name>WidgetSimple</name>
     <message>
-        <location filename="../widget_simple.cpp" line="226"/>
+        <location filename="../widget_simple.cpp" line="233"/>
         <source>Confirmation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.cpp" line="226"/>
+        <location filename="../widget_simple.cpp" line="233"/>
         <source>Do you really want to remove this files?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.cpp" line="91"/>
+        <location filename="../widget_simple.cpp" line="96"/>
         <source>Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.cpp" line="91"/>
+        <location filename="../widget_simple.cpp" line="96"/>
         <source>Do you really want to start the rename process?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.cpp" line="135"/>
+        <location filename="../widget_simple.cpp" line="140"/>
         <source>Choose a destination directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../widget_simple.cpp" line="145"/>
+        <location filename="../widget_simple.cpp" line="150"/>
         <source>%n files</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../widget_simple.cpp" line="241"/>
+        <location filename="../widget_simple.cpp" line="251"/>
         <source>Pick some files</source>
         <translation type="unfinished"></translation>
     </message>
@@ -356,85 +356,90 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="141"/>
+        <location filename="../widget_simple.ui" line="107"/>
         <source>Add some files...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="158"/>
-        <location filename="../widget_simple.ui" line="334"/>
+        <location filename="../widget_simple.ui" line="124"/>
+        <location filename="../widget_simple.ui" line="462"/>
         <source>Remove selected files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="201"/>
+        <location filename="../widget_simple.ui" line="167"/>
         <source>Sort by</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="211"/>
-        <location filename="../widget_simple.ui" line="358"/>
+        <location filename="../widget_simple.ui" line="177"/>
+        <location filename="../widget_simple.ui" line="486"/>
         <source>Up selected files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="228"/>
-        <location filename="../widget_simple.ui" line="370"/>
+        <location filename="../widget_simple.ui" line="194"/>
+        <location filename="../widget_simple.ui" line="498"/>
         <source>Down selected files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="249"/>
+        <location filename="../widget_simple.ui" line="330"/>
+        <source>Click to add some files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widget_simple.ui" line="377"/>
         <source>Extension policy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="284"/>
+        <location filename="../widget_simple.ui" line="412"/>
         <source>Filters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="297"/>
+        <location filename="../widget_simple.ui" line="425"/>
         <source>Finalizers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="314"/>
+        <location filename="../widget_simple.ui" line="442"/>
         <source>by name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="317"/>
+        <location filename="../widget_simple.ui" line="445"/>
         <source>Sort files by name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="322"/>
+        <location filename="../widget_simple.ui" line="450"/>
         <source>by modification date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="331"/>
+        <location filename="../widget_simple.ui" line="459"/>
         <source>&amp;Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="343"/>
+        <location filename="../widget_simple.ui" line="471"/>
         <source>&amp;Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="346"/>
+        <location filename="../widget_simple.ui" line="474"/>
         <source>Add files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="355"/>
+        <location filename="../widget_simple.ui" line="483"/>
         <source>&amp;Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widget_simple.ui" line="367"/>
+        <location filename="../widget_simple.ui" line="495"/>
         <source>&amp;Down</source>
         <translation type="unfinished"></translation>
     </message>
