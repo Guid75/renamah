@@ -74,6 +74,7 @@ void CaseFilter::setOperation(Operation value) {
 	if (_operation == value)
 		return;
 
+	emit settingsChanging();
 	_operation = value;
 	emit settingsChanged();
 }
@@ -82,6 +83,7 @@ void CaseFilter::setLowerOtherChars(bool value) {
 	if (_lowerOtherChars == value)
 		return;
 
+	emit settingsChanging();
 	_lowerOtherChars = value;
 	emit settingsChanged();
 }

@@ -30,6 +30,7 @@ SET(RENAMAH_SOURCES
   widget_actions.cpp
   dialog_manual_rename.cpp
   profile.cpp
+  undo_manager.cpp
 )
 
 SET(RENAMAH_FORMS
@@ -69,6 +70,7 @@ SET(RENAMAH_MOCH
   widget_filters.h
   widget_actions.h
   dialog_manual_rename.h
+  undo_manager.h
 )
 
 # Translations stuff

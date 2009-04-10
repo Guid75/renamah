@@ -34,7 +34,9 @@ namespace core
 		void deserializeProperties(const QMap<QString,QPair<QString,QVariant> > &properties);
 
 	signals:
-		/*! Emitted when modifier settings changed */
+		/** Emitted when modifier settings changing, before new value is affected. */
+		void settingsChanging();
+		/** Emitted when modifier settings changed */
 		void settingsChanged();
 
 	private:

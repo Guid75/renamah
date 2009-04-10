@@ -2,6 +2,7 @@
 
 #include <interfaces/filter_factory.h>
 
+#include "filter_manager.h"
 #include "filter_model.h"
 
 FilterModel *FilterModel::_instance = 0;
@@ -15,7 +16,7 @@ FilterModel &FilterModel::instance()
 }
 
 FilterModel::FilterModel()
-	: ModifierModel()
+	: ModifierModel(&FilterManager::instance())
 {
 }
 

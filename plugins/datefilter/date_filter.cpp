@@ -75,6 +75,7 @@ void DateFilter::setType(Type value) {
 	if (_type == value)
 		return;
 
+	emit settingsChanging();
 	_type = value;
 	emit settingsChanged();
 }
@@ -83,6 +84,7 @@ void DateFilter::setCustomDateTime(const QDateTime &value) {
 	if (_customDateTime == value)
 		return;
 
+	emit settingsChanging();
 	_customDateTime = value;
 	emit settingsChanged();
 }
@@ -91,6 +93,7 @@ void DateFilter::setFormat(Format value) {
 	if (_format == value)
 		return;
 
+	emit settingsChanging();
 	_format = value;
 	emit settingsChanged();
 }
@@ -99,6 +102,7 @@ void DateFilter::setCustomFormat(const QString &value) {
 	if (_customFormat == value)
 		return;
 
+	emit settingsChanging();
 	_customFormat = value;
 	emit settingsChanged();
 }
@@ -107,6 +111,7 @@ void DateFilter::setSeparator(const QString &value) {
 	if (_separator == value)
 		return;
 
+	emit settingsChanging();
 	_separator = value;
 	emit settingsChanged();
 }
@@ -115,6 +120,7 @@ void DateFilter::setInsertionMode(InsertionMode value) {
 	if (_insertionMode == value)
 		return;
 
+	emit settingsChanging();
 	_insertionMode = value;
 	emit settingsChanged();
 }
@@ -123,6 +129,7 @@ void DateFilter::setCustomInsertionIndex(int value) {
 	if (_customInsertionIndex == value)
 		return;
 
+	emit settingsChanging();
 	_customInsertionIndex = value;
 	emit settingsChanged();
 }

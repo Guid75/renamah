@@ -1,8 +1,4 @@
 #include <QApplication>
-#include <QtPlugin>
-#include <QLibraryInfo>
-#include <QTranslator>
-#include <QSettings>
 
 #include "main_window.h"
 

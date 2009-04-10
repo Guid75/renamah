@@ -85,6 +85,7 @@ void NumberingFilter::setStart(int value) {
 	if (_start == value)
 		return;
 
+	emit settingsChanging();
 	_start = value;
 	emit settingsChanged();
 }
@@ -93,6 +94,7 @@ void NumberingFilter::setStep(int value) {
 	if (_step == value)
 		return;
 
+	emit settingsChanging();
 	_step = value;
 	emit settingsChanged();
 }
@@ -101,6 +103,7 @@ void NumberingFilter::setSeparator(const QString &value) {
 	if (_separator == value)
 		return;
 
+	emit settingsChanging();
 	_separator = value;
 	emit settingsChanged();
 }
@@ -109,6 +112,7 @@ void NumberingFilter::setDisplayType(DisplayType value) {
 	if (_displayType == value)
 		return;
 
+	emit settingsChanging();
 	_displayType = value;
 	emit settingsChanged();
 }
@@ -117,6 +121,7 @@ void NumberingFilter::setBase(int value) {
 	if (_base == value)
 		return;
 
+	emit settingsChanging();
 	_base = value;
 	emit settingsChanged();
 }
@@ -125,6 +130,7 @@ void NumberingFilter::setPadding(int value) {
 	if (_padding == value)
 		return;
 
+	emit settingsChanging();
 	_padding = value;
 	emit settingsChanged();
 }
@@ -133,6 +139,7 @@ void NumberingFilter::setInsertionMode(InsertionMode value) {
 	if (_insertionMode == value)
 		return;
 
+	emit settingsChanging();
 	_insertionMode = value;
 	emit settingsChanged();
 }
@@ -141,6 +148,7 @@ void NumberingFilter::setCustomInsertionIndex(int value) {
 	if (_customInsertionIndex == value)
 		return;
 
+	emit settingsChanging();
 	_customInsertionIndex = value;
 	emit settingsChanged();
 }

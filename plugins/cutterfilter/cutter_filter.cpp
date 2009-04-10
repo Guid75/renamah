@@ -44,6 +44,7 @@ void CutterFilter::setStartMarkerPosition(Position value, bool correct) {
 	if (_startMarkerPosition == value)
 		return;
 
+	emit settingsChanging();
 	_startMarkerPosition = value;
 	if (correct)
 		correctEndMarker();
@@ -54,6 +55,7 @@ void CutterFilter::setStartMarkerIndex(int value, bool correct) {
 	if (_startMarkerIndex == value)
 		return;
 
+	emit settingsChanging();
 	_startMarkerIndex = value;
 	if (correct)
 		correctEndMarker();
@@ -64,6 +66,7 @@ void CutterFilter::setEndMarkerPosition(Position value, bool correct) {
 	if (_endMarkerPosition == value)
 		return;
 
+	emit settingsChanging();
 	_endMarkerPosition = value;
 	if (correct)
 		correctStartMarker();
@@ -74,6 +77,7 @@ void CutterFilter::setEndMarkerIndex(int value, bool correct) {
 	if (_endMarkerIndex == value)
 		return;
 
+	emit settingsChanging();
 	_endMarkerIndex = value;
 	if (correct)
 		correctStartMarker();
@@ -84,6 +88,7 @@ void CutterFilter::setOperation(Operation value) {
 	if (_operation == value)
 		return;
 
+	emit settingsChanging();
 	_operation = value;
 	emit settingsChanged();
 }

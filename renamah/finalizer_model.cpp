@@ -1,5 +1,6 @@
 #include <interfaces/action.h>
 
+#include "action_manager.h"
 #include "finalizer_model.h"
 
 FinalizerModel *FinalizerModel::_instance = 0;
@@ -13,7 +14,7 @@ FinalizerModel &FinalizerModel::instance()
 }
 
 FinalizerModel::FinalizerModel()
-	: ModifierModel()
+	: ModifierModel(&ActionManager::instance())
 {
 }
 

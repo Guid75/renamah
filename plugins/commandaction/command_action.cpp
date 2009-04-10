@@ -26,6 +26,7 @@ void CommandAction::setCommand(const QString &value)
 	if (_command == value)
 		return;
 
+	emit settingsChanging();
 	_command = value;
 	emit settingsChanged();
 }
@@ -35,6 +36,7 @@ void CommandAction::setDontWaitForEnd(bool value)
 	if (_dontWaitForEnd == value)
 		return;
 
+	emit settingsChanging();
 	_dontWaitForEnd = value;
 	emit settingsChanged();
 }

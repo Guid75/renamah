@@ -2,10 +2,13 @@
 
 #include <interfaces/modifier_factory.h>
 
+#include "undo_manager.h"
 #include "modifier_model.h"
 
-ModifierModel::ModifierModel()
-	: _exclusiveModifier(0)
+ModifierModel::ModifierModel(ModifierManager *manager)
+	: _manager(manager),
+	  _exclusiveModifier(0),
+	  _disableUndo(false)
 {
 }
 
@@ -62,14 +65,39 @@ QVariant ModifierModel::headerData(int section, Qt::Orientation orientation, int
 	return QVariant();
 }
 
+void ModifierModel::init(core::Modifier *modifier) {
+	connect(modifier, SIGNAL(settingsChanging()), this, SLOT(modifierChanging()));
+	connect(modifier, SIGNAL(settingsChanged()), this, SLOT(modifierChanged()));
+	connect(modifier, SIGNAL(settingsChanged()), this, SIGNAL(modifiersChanged()));
+}
+
 void ModifierModel::addModifier(core::Modifier *modifier)
 {
-	connect(modifier, SIGNAL(settingsChanged()), this, SIGNAL(modifiersChanged()));
+	init(modifier);
 
 	beginInsertRows(QModelIndex(), _modifiers.count(), _modifiers.count());
 	_modifiers << modifier;
 	_modifierStates[modifier] = true;
 	endInsertRows();
+
+	if (!_disableUndo) {
+		CreateModifierCommand *command = new CreateModifierCommand(this, _manager, modifier->factory()->info().name());
+		UndoManager::instance().push(command);
+		command->activate();
+	}
+
+	emit modifiersChanged();
+}
+
+void ModifierModel::insertModifier(int index, core::Modifier *modifier) {
+	init(modifier);
+
+	beginInsertRows(QModelIndex(), _modifiers.count(), _modifiers.count());
+	_modifiers.insert(index, modifier);
+	_modifierStates[modifier] = true;
+	endInsertRows();
+
+	// TODO : integrate into the undo framework!!!
 
 	emit modifiersChanged();
 }
@@ -205,6 +233,13 @@ Qt::DropActions ModifierModel::supportedDropActions() const {
 bool ModifierModel::removeRows(int row, int count, const QModelIndex &parent) {
 	core::Modifier *modifierToRemove = modifier(index(row, 0));
 
+	if (!_disableUndo) {
+		RemoveModifierCommand *command = new RemoveModifierCommand(this, _manager, row, modifierToRemove->factory()->info().name(),
+																   modifierToRemove->serializeProperties());
+		UndoManager::instance().push(command);
+		command->activate();
+	}
+
 	beginRemoveRows(QModelIndex(), row, row);
 
 	_modifiers.removeAt(_modifiers.indexOf(modifierToRemove));
@@ -288,4 +323,47 @@ void ModifierModel::clear() {
 	_modifierStates.clear();
 	reset();
 	emit modifiersChanged();
+}
+
+void ModifierModel::modifierChanged() {
+	if (_disableUndo)
+		return;
+
+	core::Modifier *modifier = static_cast<core::Modifier*>(sender());
+
+	// Undo managing => compute the diff
+	QMap<QString,QPair<QString,QVariant> > newProperties = modifier->serializeProperties();
+	QMap<QString,QPair<QString,QVariant> > &oldProperties = _changingModifierOldProperties;
+	QMap<QString,QPair<QString,QVariant> > undoProperties, redoProperties;
+
+	foreach (const QString &propName, newProperties.keys()) {
+		QPair<QString,QVariant> &newPair = newProperties[propName];
+		QPair<QString,QVariant> &oldPair = oldProperties[propName];
+
+		if (newPair != oldPair) {
+			undoProperties.insert(propName, oldPair);
+			redoProperties.insert(propName, newPair);
+		}
+	}
+
+	ModifyModifierCommand *command = new ModifyModifierCommand(this, _modifiers.indexOf(modifier), undoProperties, redoProperties);
+	UndoManager::instance().push(command);
+	command->activate();
+}
+
+void ModifierModel::modifierChanging() {
+	if (_disableUndo)
+		return;
+
+	core::Modifier *modifier = static_cast<core::Modifier*>(sender());
+
+	_changingModifierOldProperties = modifier->serializeProperties();
+}
+
+void ModifierModel::beginUndoAction() {
+	_disableUndo = true;
+}
+
+void ModifierModel::endUndoAction() {
+	_disableUndo = false;
 }

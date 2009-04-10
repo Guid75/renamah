@@ -6,6 +6,8 @@
 
 #include <interfaces/filter.h>
 
+#include "modifier_manager.h"
+
 class ModifierModel : public QAbstractListModel
 {
 	Q_OBJECT
@@ -16,13 +18,16 @@ public:
 	static const int colCaption = 1;
 	static const int columnNumber = 2;
 
-	ModifierModel();
+	ModifierModel(ModifierManager *manager);
 
-	/*! Returns a modifier in function of a model index */
+	/** Returns a modifier in function of a model index */
 	core::Modifier *modifier(const QModelIndex &index) const;
 
-	/*! Add a modifier to the model */
+	/** Add a modifier to the model */
 	void addModifier(core::Modifier *modifier);
+
+	/** Insert a modifier into the model */
+	void insertModifier(int index, core::Modifier *modifier);
 
 	/*! Remove the modifier at <index> */
 	void removeModifier(const QModelIndex &index);
@@ -62,6 +67,9 @@ public:
 
 	int dropRow() const { return _dropRow; }
 
+	void beginUndoAction(); // Must be called just before the undo manager makes an undo or a redo action
+	void endUndoAction(); // Must be called just after the undo manager makes an undo or a redo action
+
 	bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex());
 	int rowCount(const QModelIndex &parent = QModelIndex()) const;
 	int columnCount(const QModelIndex &parent = QModelIndex()) const;
@@ -78,12 +86,21 @@ signals:
 	void dropDone();
 
 protected:
+	ModifierManager *_manager;
 	QList<core::Modifier*> _modifiers;
 	QMap<core::Modifier*, bool> _modifierStates;
 	core::Modifier *_exclusiveModifier;
+	QMap<QString,QPair<QString,QVariant> > _changingModifierOldProperties;
 
 private:
 	int _dropRow;
+	bool _disableUndo;
+
+	void init(core::Modifier *modifier);
+
+private slots:
+	void modifierChanging();
+	void modifierChanged();
 };
 
 #endif

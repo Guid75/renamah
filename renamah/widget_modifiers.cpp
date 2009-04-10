@@ -35,6 +35,8 @@ void WidgetModifiers::init(ModifierManager *modifierManager, ModifierModel &modi
 
 	connect(_modifierModel, SIGNAL(dropDone()),
 			this, SLOT(filterDropDone()));
+	connect(_modifierModel, SIGNAL(rowsInserted(const QModelIndex &, int, int)),
+			this, SLOT(modifiersInserted(const QModelIndex &, int, int)));
 
 	treeView->header()->setResizeMode(0, QHeaderView::ResizeToContents);
 	treeView->header()->setResizeMode(1, QHeaderView::ResizeToContents);
@@ -105,8 +107,6 @@ void WidgetModifiers::addModifier(const QString &factoryName) {
 	Q_ASSERT_X(factory, "WidgetModifiers::addModifierClicked()", "<factoryName> seems to have no factory correspondant");
 
 	_modifierModel->addModifier(factory->makeModifier());
-	QModelIndex index = _modifierModel->index(_modifierModel->rowCount() - 1);
-	treeView->setCurrentIndex(_modifierModel->index(_modifierModel->rowCount() - 1));
 	stackedWidgetConfiguration->setCurrentWidget(pageConfiguration);
 }
 
@@ -235,4 +235,8 @@ void WidgetModifiers::filterDropDone() {
 void WidgetModifiers::newProfile() {
 	if (_modifierModel->rowCount())
 		treeView->setCurrentIndex(_modifierModel->index(0, 0));
+}
+
+void WidgetModifiers::modifiersInserted(const QModelIndex &parent, int start, int end) {
+	treeView->setCurrentIndex(_modifierModel->index(start));
 }

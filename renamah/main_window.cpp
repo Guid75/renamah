@@ -2,11 +2,13 @@
 #include <QSettings>
 #include <QLibraryInfo>
 #include <QFileDialog>
+#include <QShortcut>
 
 #include "plugin_manager.h"
 #include "filter_model.h"
 #include "processor.h"
 #include "profile.h"
+#include "undo_manager.h"
 #include "main_window.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -139,4 +141,12 @@ void MainWindow::on_actionSaveProfile_triggered() {
 		return;
 
 	Profile::save(fileName);
+}
+
+void MainWindow::on_actionUndo_triggered() {
+	UndoManager::instance().undo();
+}
+
+void MainWindow::on_actionRedo_triggered() {
+	UndoManager::instance().redo();
 }

@@ -24,6 +24,7 @@ void ReplaceFilter::setTargetPattern(const QString &value) {
 	if (_target.pattern() == value)
 		return;
 
+	emit settingsChanging();
 	_target.setPattern(value);
 	emit settingsChanged();
 }
@@ -32,6 +33,7 @@ void ReplaceFilter::setTargetPatternSyntax(PatternSyntax value) {
 	if (_target.patternSyntax() == toQRegExpPatternSyntax(value))
 		return;
 
+	emit settingsChanging();
 	_target.setPatternSyntax(toQRegExpPatternSyntax(value));
 	emit settingsChanged();
 }
@@ -40,6 +42,7 @@ void ReplaceFilter::setReplacement(const QString &value) {
 	if (_replacement == value)
 		return;
 
+	emit settingsChanging();
 	_replacement = value;
 	emit settingsChanged();
 }
@@ -50,6 +53,7 @@ void ReplaceFilter::setCaseSensitive(bool value) {
 	else if (!value && _target.caseSensitivity() == Qt::CaseInsensitive)
 		return;
 
+	emit settingsChanging();
 	_target.setCaseSensitivity(value ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	emit settingsChanged();
 }

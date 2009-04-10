@@ -30,4 +30,6 @@ private slots:
 	void languageRequested(const QString &language);
 	void on_actionLoadProfile_triggered();
 	void on_actionSaveProfile_triggered();
+	void on_actionUndo_triggered();
+	void on_actionRedo_triggered();
 };
