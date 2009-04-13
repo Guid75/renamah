@@ -21,9 +21,11 @@
 
 class QString;
 
+#include "global.h"
+
 namespace core
 {
-	class FilterFileInfo
+	class Q_RENAMAH_LIBCORE_EXPORT FilterFileInfo
 	{
 	public:
 		FilterFileInfo(const QString &originalFilePath,

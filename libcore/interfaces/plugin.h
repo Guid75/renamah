@@ -19,11 +19,12 @@
 #ifndef PLUGIN_H
 #define PLUGIN_H
 
+#include "global.h"
 #include "plugin_info.h"
 
 namespace core
 {
-	class Plugin
+	class Q_RENAMAH_LIBCORE_EXPORT Plugin
 	{
 	public:
 		/*! Returns all infos relatives to the plugin (name, author, etc) */

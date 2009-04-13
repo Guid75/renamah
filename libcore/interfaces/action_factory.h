@@ -19,6 +19,7 @@
 #ifndef ACTION_FACTORY_H
 #define ACTION_FACTORY_H
 
+#include "global.h"
 #include "modifier_factory.h"
 #include "action.h"
 

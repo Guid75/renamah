@@ -19,6 +19,7 @@
 #ifndef MODIFIER_FACTORY_H
 #define MODIFIER_FACTORY_H
 
+#include "global.h"
 #include "plugin.h"
 #include "modifier.h"
 #include "modifier_config_widget.h"

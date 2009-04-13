@@ -191,8 +191,7 @@ core::Modifier *ModifierModel::modifier(const QModelIndex &index) const
 	if (!index.isValid())
 		return 0;
 
-	if (index.row() >= 0 && index.row() < rowCount())
-		return _modifiers[index.row()];
+	return _modifiers[index.row()];
 }
 
 Qt::ItemFlags ModifierModel::flags(const QModelIndex &index) const
@@ -245,6 +244,8 @@ bool ModifierModel::removeRows(int row, int count, const QModelIndex &parent) {
 	endRemoveRows();
 
 	emit modifiersChanged();
+
+	return true;
 }
 
 #define MIMETYPE QLatin1String("filter-rows")

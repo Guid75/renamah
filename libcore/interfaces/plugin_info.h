@@ -23,7 +23,7 @@
 
 namespace core
 {
-     class PluginInfo
+     class Q_RENAMAH_LIBCORE_EXPORT PluginInfo
      {
 	 public:
 		 PluginInfo(const QString &name,

@@ -21,12 +21,13 @@
 
 class QString;
 
+#include "global.h"
 #include "modifier.h"
 #include "filter_file_info.h"
 
 namespace core
 {
-	class Filter : public Modifier
+	class Q_RENAMAH_LIBCORE_EXPORT Filter : public Modifier
 	{
 		Q_OBJECT
 

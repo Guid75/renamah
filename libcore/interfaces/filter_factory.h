@@ -19,6 +19,7 @@
 #ifndef FILTER_FACTORY_H
 #define FILTER_FACTORY_H
 
+#include "global.h"
 #include "modifier_factory.h"
 #include "filter.h"
 

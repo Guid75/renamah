@@ -24,13 +24,14 @@
 #include <QPair>
 #include <QVariant>
 
+#include "global.h"
 #include "plugin.h"
 
 namespace core
 {
 	class ModifierFactory;
 
-	class Modifier : public QObject
+	class Q_RENAMAH_LIBCORE_EXPORT Modifier : public QObject
 	{
 		Q_OBJECT
 

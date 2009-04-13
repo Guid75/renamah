@@ -16,25 +16,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ACTION_H
-#define ACTION_H
+#ifndef RENAMAH_LIBCORE_GLOBAL_H
+#define RENAMAH_LIBCORE_GLOBAL_H
 
-class QString;
+#include <QtCore/qglobal.h>
 
-#include "global.h"
-#include "modifier.h"
-
-namespace core
-{
-	class Q_RENAMAH_LIBCORE_EXPORT Action : public Modifier
-	{
-		Q_OBJECT
-	public:
-		Action(QObject *parent = 0) : Modifier(parent) {}
-
-		/*! Apply the action on the filename in argument */
-		virtual void apply(const QString &fileName) const = 0;
-	};
-};
+#if defined(RENAMAH_LIBCORE_LIBRARY)
+#  define Q_RENAMAH_LIBCORE_EXPORT Q_DECL_EXPORT
+#else
+#  define Q_RENAMAH_LIBCORE_EXPORT Q_DECL_IMPORT
+#endif
 
 #endif

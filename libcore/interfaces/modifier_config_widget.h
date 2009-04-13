@@ -22,11 +22,12 @@
 #include <QWidget>
 #include <QEvent>
 
+#include "global.h"
 #include "modifier.h"
 
 namespace core
 {
-	class ModifierConfigWidget : public QWidget
+	class Q_RENAMAH_LIBCORE_EXPORT ModifierConfigWidget : public QWidget
 	{
 		Q_OBJECT
 
@@ -54,6 +55,4 @@ namespace core
 	};
 };
 
-#endif											\
-
-
+#endif
