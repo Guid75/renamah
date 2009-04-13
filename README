@@ -14,7 +14,7 @@ Featuring:
 
     * cascading filters: replace, numbering, cutter, case manipulations, etc
     * cascading finalizers: launching of a system command for each files, etc
-    * undo system (TODO)
+    * undo system
     * internationalization (French and English for now)
 
 --------------------
