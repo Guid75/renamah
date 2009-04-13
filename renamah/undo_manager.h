@@ -82,6 +82,19 @@ private:
 	QMap<QString,QPair<QString,QVariant> > _properties;
 };
 
+class MoveModifierCommand : public ModifierCommand
+{
+public:
+	MoveModifierCommand(ModifierModel *model, int sourceRow, int destinationRow);
+
+	void makeUndo();
+	void makeRedo();
+
+private:
+	int _sourceRow;
+	int _destinationRow;
+};
+
 class UndoManager : public QUndoStack
 {
 	Q_OBJECT

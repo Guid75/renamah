@@ -50,22 +50,15 @@ public:
 	/*! If modifier was not exclusive => set it exclusive */
 	void toggleExclusiveState(core::Modifier *modifier);
 
-	/*! Up the modifier which index is in parameter
-	 * \returns true if the operation has been succeed
+	/** Move a modifier from a place to another
+	 * destination can be >= rowCount(), in this case, the modifier is moved at the list tail
 	 */
-	bool upModifier(const QModelIndex &modifierIndex);
-
-	/*! Down the modifier which index is in parameter
-	 * \returns true if the operation has been succeed
-	 */
-	bool downModifier(const QModelIndex &modifierIndex);
+	void moveModifier(int source, int destination);
 
 	/*! Returns the exclusive modifier */
 	core::Modifier *exclusiveModifier() const { return _exclusiveModifier; }
 
 	void refreshLayout() { emit layoutChanged(); }
-
-	int dropRow() const { return _dropRow; }
 
 	void beginUndoAction(); // Must be called just before the undo manager makes an undo or a redo action
 	void endUndoAction(); // Must be called just after the undo manager makes an undo or a redo action
@@ -83,7 +76,6 @@ public:
 
 signals:
 	void modifiersChanged();
-	void dropDone();
 
 protected:
 	ModifierManager *_manager;
@@ -93,7 +85,6 @@ protected:
 	QMap<QString,QPair<QString,QVariant> > _changingModifierOldProperties;
 
 private:
-	int _dropRow;
 	bool _disableUndo;
 
 	void init(core::Modifier *modifier);

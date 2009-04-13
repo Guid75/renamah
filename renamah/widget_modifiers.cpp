@@ -33,8 +33,6 @@ void WidgetModifiers::init(ModifierManager *modifierManager, ModifierModel &modi
 
 	treeView->setModel(_modifierModel);
 
-	connect(_modifierModel, SIGNAL(dropDone()),
-			this, SLOT(filterDropDone()));
 	connect(_modifierModel, SIGNAL(rowsInserted(const QModelIndex &, int, int)),
 			this, SLOT(modifiersInserted(const QModelIndex &, int, int)));
 
@@ -64,10 +62,6 @@ void WidgetModifiers::on_pushButtonRemove_clicked() {
 	if (!index.isValid())
 		return;
 
-	if (QMessageBox::question(this, tr("Confirmation"), tr("Do you really want to remove this filter?"),
-							  QMessageBox::Yes | QMessageBox::No) != QMessageBox::Yes)
-		return;
-
 	_modifierModel->removeModifier(index);
 }
 
@@ -76,9 +70,10 @@ void WidgetModifiers::on_pushButtonUp_clicked() {
 	if (!index.isValid())
 		return;
 
-	int row = index.row();
-	if (_modifierModel->upModifier(index))
-		treeView->setCurrentIndex(_modifierModel->index(row - 1, 0));
+	if (!index.row())
+		return;
+
+	_modifierModel->moveModifier(index.row(), index.row() - 1);
 }
 
 void WidgetModifiers::on_pushButtonDown_clicked() {
@@ -86,9 +81,10 @@ void WidgetModifiers::on_pushButtonDown_clicked() {
 	if (!index.isValid())
 		return;
 
-	int row = index.row();
-	if (_modifierModel->downModifier(index))
-		treeView->setCurrentIndex(_modifierModel->index(row + 1, 0));
+	if (index.row() == _modifierModel->rowCount() - 1)
+		return;
+
+	_modifierModel->moveModifier(index.row(), index.row() + 1);
 }
 
 void WidgetModifiers::aboutToShowAddModifierMenu() {
@@ -226,10 +222,6 @@ void WidgetModifiers::changeEvent(QEvent *event) {
 		retranslate();
 	} else
 		QWidget::changeEvent(event);
-}
-
-void WidgetModifiers::filterDropDone() {
-	treeView->setCurrentIndex(_modifierModel->index(_modifierModel->dropRow(), 0));
 }
 
 void WidgetModifiers::newProfile() {

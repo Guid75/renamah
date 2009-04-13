@@ -92,7 +92,7 @@ void ModifierModel::addModifier(core::Modifier *modifier)
 void ModifierModel::insertModifier(int index, core::Modifier *modifier) {
 	init(modifier);
 
-	beginInsertRows(QModelIndex(), _modifiers.count(), _modifiers.count());
+	beginInsertRows(QModelIndex(), index, index);
 	_modifiers.insert(index, modifier);
 	_modifierStates[modifier] = true;
 	endInsertRows();
@@ -202,30 +202,6 @@ void ModifierModel::toggleExclusiveState(core::Modifier *modifier)
 	emit modifiersChanged();
 }
 
-bool ModifierModel::upModifier(const QModelIndex &modifierIndex)
-{
-	if (!modifierIndex.row())
-		return false;
-
-	_modifiers.swap(modifierIndex.row(), modifierIndex.row() - 1);
-	emit dataChanged(index(modifierIndex.row() - 1, 0),
-					 index(modifierIndex.row(), columnNumber - 1));
-	emit modifiersChanged();
-	return true;
-}
-
-bool ModifierModel::downModifier(const QModelIndex &modifierIndex)
-{
-	if (modifierIndex.row() == rowCount() - 1)
-		return false;
-
-	_modifiers.swap(modifierIndex.row(), modifierIndex.row() + 1);
-	emit dataChanged(index(modifierIndex.row(), 0),
-					 index(modifierIndex.row() + 1, columnNumber - 1));
-	emit modifiersChanged();
-	return true;
-}
-
 Qt::DropActions ModifierModel::supportedDropActions() const {
 	return Qt::MoveAction;
 }
@@ -285,33 +261,26 @@ bool ModifierModel::dropMimeData(const QMimeData *data, Qt::DropAction action, i
 
 	QByteArray inData = data->data(MIMETYPE);
 	QDataStream stream(inData);
-	int r;
-	stream >> r;
+	int sourceRow;
+	stream >> sourceRow;
 
-	core::Modifier *modifier = _modifiers[r];
+	int destinationRow = rowCount();
 
 	if (row != -1) {
 		if (row >= rowCount()) {
-			_modifiers.takeAt(r);
-			_modifiers << modifier;
-			_dropRow = rowCount() - 1;
+			destinationRow = rowCount();
 		} else {
-			if (r < row)
+			if (sourceRow < row)
 				row--;
-			_modifiers.move(r, row);
-			_dropRow = row;
+			destinationRow = row;
 		}
 	} else if (parent.isValid()) {
-		_modifiers.move(r, parent.row());
-		_dropRow = parent.row();
+		destinationRow = parent.row();
 	} else if (!parent.isValid()) {
-		_modifiers.takeAt(r);
-		_modifiers << modifier;
-		_dropRow = rowCount() - 1;
+		destinationRow = rowCount();
 	}
 
-	emit modifiersChanged();
-	emit dropDone();
+	moveModifier(sourceRow, destinationRow);
 
 	return false;
 }
@@ -366,4 +335,30 @@ void ModifierModel::beginUndoAction() {
 
 void ModifierModel::endUndoAction() {
 	_disableUndo = false;
+}
+
+void ModifierModel::moveModifier(int sourceRow, int destinationRow) {
+	Q_ASSERT_X(sourceRow >= 0 && sourceRow < rowCount(), "ModifierModel::moveModifier()", qPrintable(QString("<sourceRow> is out of bound: %d!").arg(sourceRow)));
+
+	if (sourceRow == destinationRow) // Save destination => do nothing
+		return;
+
+	if (destinationRow >= rowCount() - 1 &&
+		sourceRow == rowCount() - 1) // Already at the list queue => do nothing
+		return;
+
+	beginRemoveRows(QModelIndex(), sourceRow, sourceRow);
+	core::Modifier *modifier = _modifiers.takeAt(sourceRow);
+	endRemoveRows();
+	beginInsertRows(QModelIndex(), destinationRow, destinationRow);
+	_modifiers.insert(destinationRow, modifier);
+	endInsertRows();
+
+	emit modifiersChanged();
+
+	if (!_disableUndo) {
+		MoveModifierCommand *command = new MoveModifierCommand(this, sourceRow, destinationRow);
+		UndoManager::instance().push(command);
+		command->activate();
+	}
 }

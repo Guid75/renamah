@@ -50,7 +50,6 @@ private slots:
 	void aboutToShowAddModifierMenu();
 	void currentModifierChanged(const QModelIndex &current, const QModelIndex &previous);
 	void widgetModifierChanged();
-	void filterDropDone();
 	void modifiersInserted(const QModelIndex &parent, int start, int end);
 };
 

@@ -112,3 +112,24 @@ void RemoveModifierCommand::makeRedo() {
 	_model->removeModifier(_model->index(_modifierIndex, 0));
 }
 
+/////////////////////////////////
+/// MoveModifierCommand /////////
+/////////////////////////////////
+
+MoveModifierCommand::MoveModifierCommand(ModifierModel *model, int sourceRow, int destinationRow)
+	: ModifierCommand(model),
+	  _sourceRow(sourceRow),
+	  _destinationRow(destinationRow) {
+	setText("Modifier move");
+}
+
+void MoveModifierCommand::makeUndo() {
+	if (_destinationRow >= _model->rowCount())
+		_model->moveModifier(_model->rowCount() - 1, _sourceRow);
+	else
+		_model->moveModifier(_destinationRow, _sourceRow);
+}
+
+void MoveModifierCommand::makeRedo() {
+	_model->moveModifier(_sourceRow, _destinationRow);
+}
