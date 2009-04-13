@@ -35,6 +35,7 @@ To be successfully compiled, Renamah depends on some libraries:
 
 - libqt4-core
 - libqt4-gui
+- libqt4-xml
 
 ------------
 THE END WORD
