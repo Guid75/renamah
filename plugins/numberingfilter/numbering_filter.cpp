@@ -71,6 +71,9 @@ QString NumberingFilter::resume() const {
 }
 
 QString NumberingFilter::toRoman(int n) {
+	if (n < 1 || n > 3999)
+		return QString::number(n);
+
 	QString result;
 	static int values[] = { 1000, 900, 500, 400, 100,90, 50, 40, 10, 9, 5, 4, 1 };
 	static QString numerals[] = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
