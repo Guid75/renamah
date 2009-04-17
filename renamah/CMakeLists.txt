@@ -31,6 +31,8 @@ SET(RENAMAH_SOURCES
   dialog_manual_rename.cpp
   profile.cpp
   undo_manager.cpp
+  global.cpp
+  paths.cpp
 )
 
 SET(RENAMAH_FORMS

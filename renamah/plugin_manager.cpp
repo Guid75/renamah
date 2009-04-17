@@ -26,6 +26,7 @@
 
 #include "filter_manager.h"
 #include "action_manager.h"
+#include "paths.h"
 #include "plugin_manager.h"
 
 PluginManager *PluginManager::_instance = 0;
@@ -45,7 +46,7 @@ void PluginManager::load()
 		dispatchPlugin(plugin);
 
 	// Dynamic plugins
-	QDir pluginsDir(QDir(QCoreApplication::applicationDirPath()).filePath("plugins"));
+	QDir pluginsDir(QDir(Paths::sharePath()).filePath("plugins"));
 	foreach (const QString &fileName, pluginsDir.entryList(QDir::Files))
 	{
 		if (QLibrary::isLibrary(fileName)) {
