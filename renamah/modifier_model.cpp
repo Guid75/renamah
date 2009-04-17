@@ -220,7 +220,7 @@ void ModifierModel::toggleExclusiveState(core::Modifier *modifier)
 }
 
 Qt::DropActions ModifierModel::supportedDropActions() const {
-	return Qt::MoveAction;
+	return Qt::CopyAction;
 }
 
 bool ModifierModel::removeRows(int row, int count, const QModelIndex &parent) {

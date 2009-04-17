@@ -1,0 +1,17 @@
+* Dissociation of filtered result and action of the filter (a filter can
+* execute extra-code too and not only rename. We don't want this
+* extra-code to be executed several times but only once at the process
+* time)
+* Add the original filename in filters apply function parameters
+* Be capable to make manually rename operations
+* Do we finalize files when their name is unchanged? An option?
+* Code a system call action which is under unix a call to
+* "sh/bash/whatever" + arguments into a QProcess and under others
+* platform just a simple call using QProcess.
+* Implement a language selector and dynamically load a language file
+* Save/restore profiles
+* Undo system
+* Smart hints for trees
+* Take care of too high roman numbers in numbering plugin
+* Take care of forbidden chars in general
+* Offer a way to sort files with differents criterias 
