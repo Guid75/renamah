@@ -27,6 +27,7 @@
 #include "processor.h"
 #include "profile.h"
 #include "undo_manager.h"
+#include "paths.h"
 #include "main_window.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -122,7 +123,7 @@ void MainWindow::installLanguage(const QString &language) {
 	// Install the main app translator
 	QTranslator *translator = new QTranslator;
 	translator->load("renamah_" + language,
-					 QCoreApplication::applicationDirPath());
+					 Paths::sharePath());
     qApp->installTranslator(translator);
 	translators << translator;
 

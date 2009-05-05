@@ -1,9 +1,9 @@
 #!/bin/sh
 
-cp renamah/*.qm bin
-cp plugins/cutterfilter/*.qm bin/plugins
-cp plugins/casefilter/*.qm bin/plugins
-cp plugins/commandaction/*.qm bin/plugins
-cp plugins/numberingfilter/*.qm bin/plugins
-cp plugins/replacefilter/*.qm bin/plugins
-cp plugins/datefilter/*.qm bin/plugins
+cp renamah/*.qm share/renamah
+cp plugins/cutterfilter/*.qm share/renamah/plugins
+cp plugins/casefilter/*.qm share/renamah/plugins
+cp plugins/commandaction/*.qm share/renamah/plugins
+cp plugins/numberingfilter/*.qm share/renamah/plugins
+cp plugins/replacefilter/*.qm share/renamah/plugins
+cp plugins/datefilter/*.qm share/renamah/plugins
