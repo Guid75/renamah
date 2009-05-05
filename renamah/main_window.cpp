@@ -67,8 +67,8 @@ void MainWindow::refreshLanguageActions() {
 	QString currentLanguage = settings.value("general/language", "").toString();
 
 	// Get languages list
-	foreach (const QFileInfo &fileInfo, QDir(QCoreApplication::applicationDirPath()).entryInfoList(QStringList() << "*.qm",
-																								   QDir::Files)) {
+	foreach (const QFileInfo &fileInfo, QDir(Paths::sharePath()).entryInfoList(QStringList() << "*.qm",
+																			   QDir::Files)) {
 		QString baseName = fileInfo.baseName();
 		int p = baseName.indexOf("_");
 		if (p > 0) {
