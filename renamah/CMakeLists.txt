@@ -92,5 +92,17 @@ ADD_EXECUTABLE(renamah ${RENAMAH_SOURCES} ${RENAMAH_FORMS_H} ${RENAMAH_MOC} ${RE
 ADD_DEPENDENCIES(renamah translations_renamah)
 
 TARGET_LINK_LIBRARIES(
-  renamah core ${QT_LIBRARIES}
+  renamah renamahcore ${QT_LIBRARIES}
   )
+
+
+INSTALL(TARGETS renamah
+  RUNTIME DESTINATION bin)
+#INSTALL(DIRECTORY share/applications
+#        DESTINATION share
+#        PATTERN .svn
+#        EXCLUDE)
+#INSTALL(DIRECTORY share/pixmaps
+#        DESTINATION share
+#        PATTERN .svn
+#        EXCLUDE)

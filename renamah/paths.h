@@ -24,6 +24,7 @@
 namespace Paths
 {
     QString sharePath();
+	QString libPath();
     QString profilePath();
 };
 

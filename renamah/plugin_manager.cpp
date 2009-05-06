@@ -46,7 +46,7 @@ void PluginManager::load()
 		dispatchPlugin(plugin);
 
 	// Dynamic plugins
-	QDir pluginsDir(QDir(Paths::sharePath()).filePath("plugins"));
+	QDir pluginsDir(QDir(Paths::libPath()).filePath("plugins"));
 	foreach (const QString &fileName, pluginsDir.entryList(QDir::Files))
 	{
 		if (QLibrary::isLibrary(fileName)) {

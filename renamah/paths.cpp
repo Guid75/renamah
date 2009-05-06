@@ -43,6 +43,25 @@ QString Paths::sharePath()
 #endif
 }
 
+QString Paths::libPath()
+{
+    QDir appDir(QCoreApplication::applicationDirPath());
+
+    if (Global::devMode()) {
+        return QDir(appDir.filePath("../lib/renamah")).canonicalPath();
+	}
+
+    if (Global::localMode())
+        return appDir.absolutePath();
+
+
+#if defined(Q_OS_LINUX)
+    return QDir(appDir.filePath("/usr/lib/renamah")).canonicalPath();
+#else
+    return appDir.absolutePath();
+#endif
+}
+
 QString Paths::profilePath()
 {
     if (Global::devMode() || Global::localMode())

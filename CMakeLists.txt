@@ -32,17 +32,8 @@ ADD_SUBDIRECTORY(libcore)
 ADD_SUBDIRECTORY(plugins)
 ADD_SUBDIRECTORY(renamah)
 
-# INSTALL(TARGETS renamah
-#	RUNTIME DESTINATION bin)
-#INSTALL(DIRECTORY share/renamah
-#        DESTINATION share
-#        PATTERN .svn
-#        EXCLUDE)
-#INSTALL(DIRECTORY share/applications
-#        DESTINATION share
-#        PATTERN .svn
-#        EXCLUDE)
-#INSTALL(DIRECTORY share/pixmaps
-#        DESTINATION share
-#        PATTERN .svn
-#        EXCLUDE)
+INSTALL(DIRECTORY share/renamah
+  DESTINATION share)
+
+INSTALL(DIRECTORY lib/renamah
+  DESTINATION lib)
