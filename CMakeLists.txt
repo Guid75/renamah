@@ -10,7 +10,7 @@ include_directories(
 
 option (UPDATE_TRANSLATIONS "Update source translation translations/*.ts files (WARNING: make clean will delete the source .ts files! Danger!)"
   "off")
-option (NO_OBSOLETE_TRANSLATIONS "Remove all obsolete translations in *.ts files. This options will work only when UPDATE_TRANSLATIONS i on"
+option (NO_OBSOLETE_TRANSLATIONS "Remove all obsolete translations in *.ts files. This options will work only when UPDATE_TRANSLATIONS is on"
   "off")
 
 # Use: COMPUTE_QT_FILES(QM_FILES ${SOURCE_FILES} ${TRANSLATIONS_FILES})
@@ -32,8 +32,8 @@ ADD_SUBDIRECTORY(libcore)
 ADD_SUBDIRECTORY(plugins)
 ADD_SUBDIRECTORY(renamah)
 
-INSTALL(DIRECTORY share/renamah
-  DESTINATION share)
+#INSTALL(DIRECTORY share/renamah
+#  DESTINATION share)
 
 INSTALL(DIRECTORY lib/renamah
   DESTINATION lib)

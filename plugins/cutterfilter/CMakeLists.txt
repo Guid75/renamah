@@ -40,3 +40,6 @@ IF(MSVC)
 ENDIF(MSVC)
 
 ADD_DEPENDENCIES(cutterfilter translations_cutterfilter)
+
+INSTALL(FILES ${QM_FILES}
+  DESTINATION share/renamah/plugins)

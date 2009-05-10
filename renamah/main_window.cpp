@@ -129,9 +129,8 @@ void MainWindow::installLanguage(const QString &language) {
 
 	// Install all plugins translators
 	foreach (const QString &fileName, PluginManager::instance().pluginFileNames()) {
-		QFileInfo fileInfo(fileName);
-		QString baseName = fileInfo.completeBaseName();
-		QString qmFileName = fileInfo.absoluteDir().filePath(baseName) + "_" + language + ".qm";
+		QString relativeFileName = QFileInfo(fileName).completeBaseName() + "_" + language + ".qm";
+		QString qmFileName = QDir(QDir(Paths::sharePath()).filePath("plugins")).filePath(relativeFileName);
 
 		QTranslator *translator = new QTranslator;
 		translator->load(qmFileName,

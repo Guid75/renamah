@@ -40,3 +40,6 @@ IF(MSVC)
 ENDIF(MSVC)
 
 ADD_DEPENDENCIES(replacefilter translations_replacefilter)
+
+INSTALL(FILES ${QM_FILES}
+  DESTINATION share/renamah/plugins)

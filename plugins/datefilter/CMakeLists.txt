@@ -42,3 +42,6 @@ IF(MSVC)
 ENDIF(MSVC)
 
 ADD_DEPENDENCIES(datefilter translations_datefilter)
+
+INSTALL(FILES ${QM_FILES}
+  DESTINATION share/renamah/plugins)

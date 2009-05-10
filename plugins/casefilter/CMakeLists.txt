@@ -41,3 +41,6 @@ IF(MSVC)
 ENDIF(MSVC)
 
 ADD_DEPENDENCIES(casefilter translations_casefilter)
+
+INSTALL(FILES ${QM_FILES}
+  DESTINATION share/renamah/plugins)

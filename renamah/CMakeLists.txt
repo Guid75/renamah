@@ -98,6 +98,10 @@ TARGET_LINK_LIBRARIES(
 
 INSTALL(TARGETS renamah
   RUNTIME DESTINATION bin)
+
+INSTALL(FILES ${QM_FILES}
+  DESTINATION share/renamah/)
+
 #INSTALL(DIRECTORY share/applications
 #        DESTINATION share
 #        PATTERN .svn

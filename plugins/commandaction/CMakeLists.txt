@@ -45,3 +45,6 @@ IF(MSVC)
 ENDIF(MSVC)
 
 ADD_DEPENDENCIES(commandaction translations_commandaction)
+
+INSTALL(FILES ${QM_FILES}
+  DESTINATION share/renamah/plugins)
