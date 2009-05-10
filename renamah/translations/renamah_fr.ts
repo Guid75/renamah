@@ -109,7 +109,7 @@
     <message>
         <location filename="../main_window.ui" line="76"/>
         <source>&amp;Settings</source>
-        <translation></translation>
+        <translation>&amp;Paramètres</translation>
     </message>
     <message>
         <location filename="../main_window.ui" line="82"/>
