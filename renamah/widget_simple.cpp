@@ -91,12 +91,12 @@ void WidgetSimple::initAfterPluginLoaded() {
     widgetFilters->addModifier("numbering");
 //    widgetFinalizers->addModifier("command");
 
-	// TEMP : Fill with some files
-	foreach (const QFileInfo &fileInfo, QDir::home().entryInfoList(QDir::Files))
-		FileModel::instance().addFile(fileInfo.absoluteFilePath());
+    // TEMP : Fill with some files
+    foreach (const QFileInfo &fileInfo, QDir::home().entryInfoList(QDir::Files))
+        FileModel::instance().addFile(fileInfo.absoluteFilePath());
 
-	if (FileModel::instance().rowCount())
-		stackedWidgetFiles->setCurrentWidget(pageFiles);
+    if (FileModel::instance().rowCount())
+        stackedWidgetFiles->setCurrentWidget(pageFiles);
 }
 
 void WidgetSimple::on_pushButtonProcess_clicked() {

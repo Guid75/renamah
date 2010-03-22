@@ -4,9 +4,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6.0)
 
 FIND_PACKAGE(Qt4 REQUIRED)
 
-include_directories(
-  ${RENAMAH_BINARY_DIR}/libcore
-  )
+INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/libcore)
 
 option (UPDATE_TRANSLATIONS "Update source translation translations/*.ts files (WARNING: make clean will delete the source .ts files! Danger!)"
   "off")
