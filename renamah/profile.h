@@ -26,12 +26,12 @@
 class Profile
 {
 public:
-	static bool load(const QString &fileName);
-	static bool save(const QString &fileName);
+    static bool load(const QString &fileName);
+    static bool save(const QString &fileName);
 
 private:
-	static void saveExtensionPolicy(QDomElement &root, const ExtensionPolicy &policy);
-	static ExtensionPolicy loadExtensionPolicy(const QDomElement &policyElem);
+    static void saveExtensionPolicy(QDomElement &root, const ExtensionPolicy &policy);
+    static ExtensionPolicy loadExtensionPolicy(const QDomElement &policyElem);
 };
 
 #endif

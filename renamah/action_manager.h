@@ -24,12 +24,12 @@
 class ActionManager : public ModifierManager
 {
 public:
-	static ActionManager &instance();
+    static ActionManager &instance();
 
-	QString modifierTypeName() { return QObject::tr("action"); }
+    QString modifierTypeName() { return QObject::tr("action"); }
 
 private:
-	static ActionManager *_instance;
+    static ActionManager *_instance;
 };
 
 #endif

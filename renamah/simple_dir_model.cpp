@@ -20,5 +20,5 @@
 
 int SimpleDirModel::columnCount(const QModelIndex & parent) const
 {
-     return 1;
+    return 1;
 }

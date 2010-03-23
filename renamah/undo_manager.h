@@ -31,99 +31,99 @@
 class ModifierCommand : public QUndoCommand
 {
 public:
-	ModifierCommand(ModifierModel *model);
+    ModifierCommand(ModifierModel *model);
 
-	/// undo/redo won't work until this command is activated
-	void activate() { _activated = true; }
+    /// undo/redo won't work until this command is activated
+    void activate() { _activated = true; }
 
-	void undo();
-	void redo();
+    void undo();
+    void redo();
 
 protected:
-	ModifierModel *_model;
+    ModifierModel *_model;
 
-	virtual void makeUndo() = 0;
-	virtual void makeRedo() = 0;
+    virtual void makeUndo() = 0;
+    virtual void makeRedo() = 0;
 
 private:
-	bool _activated;
+    bool _activated;
 };
 
 class ModifyModifierCommand : public ModifierCommand
 {
 public:
-	ModifyModifierCommand(ModifierModel *model,
-						  int modifierIndex,
-						  const QMap<QString,QPair<QString,QVariant> > &undoProperties,
-						  const QMap<QString,QPair<QString,QVariant> > &redoProperties);
+    ModifyModifierCommand(ModifierModel *model,
+                          int modifierIndex,
+                          const QMap<QString,QPair<QString,QVariant> > &undoProperties,
+                          const QMap<QString,QPair<QString,QVariant> > &redoProperties);
 
-	void makeUndo();
-	void makeRedo();
+    void makeUndo();
+    void makeRedo();
 
 private:
-	int _modifierIndex;
-	QMap<QString,QPair<QString,QVariant> > _undoProperties;
-	QMap<QString,QPair<QString,QVariant> > _redoProperties;
+    int _modifierIndex;
+    QMap<QString,QPair<QString,QVariant> > _undoProperties;
+    QMap<QString,QPair<QString,QVariant> > _redoProperties;
 };
 
 class CreateModifierCommand : public ModifierCommand
 {
 public:
-	CreateModifierCommand(ModifierModel *model,
-						  ModifierManager *manager,
-						  const QString &factoryName);
+    CreateModifierCommand(ModifierModel *model,
+                          ModifierManager *manager,
+                          const QString &factoryName);
 
-	void makeUndo();
-	void makeRedo();
+    void makeUndo();
+    void makeRedo();
 
 private:
-	ModifierManager *_manager;
-	QString _factoryName;
+    ModifierManager *_manager;
+    QString _factoryName;
 };
 
 class RemoveModifierCommand : public ModifierCommand
 {
 public:
-	RemoveModifierCommand(ModifierModel *model,
-						  ModifierManager *manager,
-						  int modifierIndex,
-						  const QString &factoryName,
-						  const QMap<QString,QPair<QString,QVariant> > &properties);
+    RemoveModifierCommand(ModifierModel *model,
+                          ModifierManager *manager,
+                          int modifierIndex,
+                          const QString &factoryName,
+                          const QMap<QString,QPair<QString,QVariant> > &properties);
 
-	void makeUndo();
-	void makeRedo();
+    void makeUndo();
+    void makeRedo();
 
 private:
-	ModifierManager *_manager;
-	int _modifierIndex;
-	QString _factoryName;
-	QMap<QString,QPair<QString,QVariant> > _properties;
+    ModifierManager *_manager;
+    int _modifierIndex;
+    QString _factoryName;
+    QMap<QString,QPair<QString,QVariant> > _properties;
 };
 
 class MoveModifierCommand : public ModifierCommand
 {
 public:
-	MoveModifierCommand(ModifierModel *model, int sourceRow, int destinationRow);
+    MoveModifierCommand(ModifierModel *model, int sourceRow, int destinationRow);
 
-	void makeUndo();
-	void makeRedo();
+    void makeUndo();
+    void makeRedo();
 
 private:
-	int _sourceRow;
-	int _destinationRow;
+    int _sourceRow;
+    int _destinationRow;
 };
 
 class UndoManager : public QUndoStack
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	static UndoManager &instance();
+    static UndoManager &instance();
 
 private:
-	UndoManager(QObject *parent = 0) : QUndoStack(parent) {}
+    UndoManager(QObject *parent = 0) : QUndoStack(parent) {}
 
-	static UndoManager *_instance;
+    static UndoManager *_instance;
 };
 
 #endif

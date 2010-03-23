@@ -24,15 +24,15 @@
 
 class ModifierDelegate : public QStyledItemDelegate
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	ModifierDelegate(QObject *parent = 0);
+    ModifierDelegate(QObject *parent = 0);
 
-	void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
+    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
 
 private:
-	QRect getStateRect() const;
+    QRect getStateRect() const;
 };
 
 #endif

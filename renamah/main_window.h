@@ -25,29 +25,29 @@
 
 class MainWindow : public QMainWindow, private Ui::MainWindow
 {
-     Q_OBJECT
+    Q_OBJECT
 
 public:
-	MainWindow(QWidget *parent = 0);
+    MainWindow(QWidget *parent = 0);
 
 protected:
-	void changeEvent(QEvent *event);
+    void changeEvent(QEvent *event);
 
 private:
-	QMenu menuLanguages;
-	QActionGroup *actionGroupLanguages;
-	QSignalMapper signalMapperLanguages;
-	QList<QTranslator*> translators;
+    QMenu menuLanguages;
+    QActionGroup *actionGroupLanguages;
+    QSignalMapper signalMapperLanguages;
+    QList<QTranslator*> translators;
 
-	void refreshLanguageActions();
+    void refreshLanguageActions();
 
-	void installLanguage(const QString &language);
+    void installLanguage(const QString &language);
 
 private slots:
-	void processorStarted();
-	void languageRequested(const QString &language);
-	void on_actionLoadProfile_triggered();
-	void on_actionSaveProfile_triggered();
-	void on_actionUndo_triggered();
-	void on_actionRedo_triggered();
+    void processorStarted();
+    void languageRequested(const QString &language);
+    void on_actionLoadProfile_triggered();
+    void on_actionSaveProfile_triggered();
+    void on_actionUndo_triggered();
+    void on_actionRedo_triggered();
 };

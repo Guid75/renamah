@@ -28,31 +28,31 @@
 
 class WidgetFilters : public WidgetModifiers
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	WidgetFilters(QWidget *parent = 0);
+    WidgetFilters(QWidget *parent = 0);
 
-	void init(ModifierManager *modifierManager, ModifierModel &modifierModel);
+    void init(ModifierManager *modifierManager, ModifierModel &modifierModel);
 
 protected:
-	void setConfigWidget(QWidget *widget);
-	void currentModifierChanged(core::Modifier *modifier);
-	void changeEvent(QEvent *event);
+    void setConfigWidget(QWidget *widget);
+    void currentModifierChanged(core::Modifier *modifier);
+    void changeEvent(QEvent *event);
 
 private:
-	QTabWidget *tabWidgetMain;
-	QScrollArea *scrollAreaGeneral;
-	QScrollArea *scrollAreaExtensionPolicy;
-	QCheckBox *checkBoxExtensionPolicyState;
+    QTabWidget *tabWidgetMain;
+    QScrollArea *scrollAreaGeneral;
+    QScrollArea *scrollAreaExtensionPolicy;
+    QCheckBox *checkBoxExtensionPolicyState;
 
-	WidgetExtensionPolicy *widgetExtensionPolicy;
+    WidgetExtensionPolicy *widgetExtensionPolicy;
 
-	void retranslate();
+    void retranslate();
 
 private slots:
-	void extensionPolicyStateToggled(bool checked);
-	void extensionPolicyChanged();
+    void extensionPolicyStateToggled(bool checked);
+    void extensionPolicyChanged();
 };
 
 #endif

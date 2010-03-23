@@ -25,18 +25,18 @@
 class PluginManager
 {
 public:
-	static PluginManager &instance();
+    static PluginManager &instance();
 
-	void load();
+    void load();
 
-	const QStringList &pluginFileNames() const { return _pluginFileNames; }
+    const QStringList &pluginFileNames() const { return _pluginFileNames; }
 
 private:
-	static PluginManager *_instance;
+    static PluginManager *_instance;
 
-	QStringList _pluginFileNames;
+    QStringList _pluginFileNames;
 
-	void dispatchPlugin(QObject *plugin);
+    void dispatchPlugin(QObject *plugin);
 };
 
 #endif

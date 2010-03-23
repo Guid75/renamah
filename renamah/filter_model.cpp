@@ -27,81 +27,81 @@ FilterModel *FilterModel::_instance = 0;
 
 FilterModel &FilterModel::instance()
 {
-	if (!_instance)
-		_instance = new FilterModel;
+    if (!_instance)
+        _instance = new FilterModel;
 
-	return *_instance;
+    return *_instance;
 }
 
 FilterModel::FilterModel()
-	: ModifierModel(&FilterManager::instance())
+    : ModifierModel(&FilterManager::instance())
 {
 }
 
 QString FilterModel::apply(const QString &filePath, int fileIndex) const
 {
-	QList<core::Filter*> filters;
-	if (exclusiveModifier())
-		filters << static_cast<core::Filter*>(exclusiveModifier());
-	else
-		foreach (core::Modifier *modifier, _modifiers)
-		{
-			if (_modifierStates[modifier])
-				filters << static_cast<core::Filter*>(modifier);
-		}
+    QList<core::Filter*> filters;
+    if (exclusiveModifier())
+        filters << static_cast<core::Filter*>(exclusiveModifier());
+    else
+        foreach (core::Modifier *modifier, _modifiers)
+        {
+        if (_modifierStates[modifier])
+            filters << static_cast<core::Filter*>(modifier);
+    }
 
-	QDir dir = QFileInfo(filePath).dir();
-	QString tmpFilePath = filePath;
-	foreach (core::Filter *filter, filters)
-	{
-		if (localExtensionPolicyStates[filter])
-			tmpFilePath = localExtensionPolicies[filter].applyFilterOnFilePath(*filter, fileIndex, tmpFilePath, filePath);
-		else
-			tmpFilePath = _extensionPolicy.applyFilterOnFilePath(*filter, fileIndex, tmpFilePath, filePath);
-	}
+    QDir dir = QFileInfo(filePath).dir();
+    QString tmpFilePath = filePath;
+    foreach (core::Filter *filter, filters)
+    {
+        if (localExtensionPolicyStates[filter])
+            tmpFilePath = localExtensionPolicies[filter].applyFilterOnFilePath(*filter, fileIndex, tmpFilePath, filePath);
+        else
+            tmpFilePath = _extensionPolicy.applyFilterOnFilePath(*filter, fileIndex, tmpFilePath, filePath);
+    }
 
-	return tmpFilePath;
+    return tmpFilePath;
 }
 
 void FilterModel::setExtensionPolicy(const ExtensionPolicy &policy)
 {
-	if (policy == _extensionPolicy)
-		return;
+    if (policy == _extensionPolicy)
+        return;
 
-	_extensionPolicy = policy;
+    _extensionPolicy = policy;
 
-	emit modifiersChanged();
+    emit modifiersChanged();
 }
 
 bool FilterModel::isLocalExtensionPolicyEnabled(core::Filter *filter) const {
-	return localExtensionPolicyStates[filter];
+    return localExtensionPolicyStates[filter];
 }
 
 void FilterModel::setLocalExtensionPolicyEnabled(core::Filter *filter, bool state)
 {
-	localExtensionPolicyStates[filter] = state;
-	emit modifiersChanged();
+    localExtensionPolicyStates[filter] = state;
+    emit modifiersChanged();
 }
 
 ExtensionPolicy FilterModel::localExtensionPolicy(core::Filter *filter) const
 {
-	return localExtensionPolicies[filter];
+    return localExtensionPolicies[filter];
 }
 
 void FilterModel::setLocalExtensionPolicy(core::Filter *filter, const ExtensionPolicy &policy)
 {
-	QMap<core::Filter*, ExtensionPolicy>::iterator it = localExtensionPolicies.find(filter);
-	if (it == localExtensionPolicies.end())
-		localExtensionPolicies.insert(filter, policy);
-	else
-		*it = policy;
-	emit modifiersChanged();
+    QMap<core::Filter*, ExtensionPolicy>::iterator it = localExtensionPolicies.find(filter);
+    if (it == localExtensionPolicies.end())
+        localExtensionPolicies.insert(filter, policy);
+    else
+        *it = policy;
+    emit modifiersChanged();
 }
 
 void FilterModel::clear() {
-	localExtensionPolicies.clear();
-	localExtensionPolicyStates.clear();
-	_extensionPolicy = ExtensionPolicy();
+    localExtensionPolicies.clear();
+    localExtensionPolicyStates.clear();
+    _extensionPolicy = ExtensionPolicy();
 
-	ModifierModel::clear();
+    ModifierModel::clear();
 }

@@ -24,12 +24,12 @@
 class FilterManager : public ModifierManager
 {
 public:
-	static FilterManager &instance();
+    static FilterManager &instance();
 
-	QString modifierTypeName() { return QObject::tr("filter"); }
+    QString modifierTypeName() { return QObject::tr("filter"); }
 
 private:
-     static FilterManager *_instance;
+    static FilterManager *_instance;
 };
 
 #endif

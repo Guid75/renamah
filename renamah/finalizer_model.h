@@ -23,18 +23,18 @@
 
 class FinalizerModel : public ModifierModel
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	static FinalizerModel &instance();
+    static FinalizerModel &instance();
 
-	/*! Apply finalizers on the file in argument */
-	void apply(const QString &fileName) const;
+    /*! Apply finalizers on the file in argument */
+    void apply(const QString &fileName) const;
 
 private:
-	FinalizerModel();
+    FinalizerModel();
 
-	static FinalizerModel *_instance;
+    static FinalizerModel *_instance;
 };
 
 #endif

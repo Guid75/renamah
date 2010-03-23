@@ -28,47 +28,47 @@
 
 class WidgetModifiers : public QWidget, protected Ui::WidgetModifiers
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	WidgetModifiers(QWidget *parent = 0);
+    WidgetModifiers(QWidget *parent = 0);
 
-	virtual void init(ModifierManager *modifierManager, ModifierModel &modifierModel);
-	/*! Called after each profile loaded */
-	virtual void newProfile();
+    virtual void init(ModifierManager *modifierManager, ModifierModel &modifierModel);
+    /*! Called after each profile loaded */
+    virtual void newProfile();
 
 public slots:
-	void addModifier(const QString &factoryName);
+    void addModifier(const QString &factoryName);
 
 protected:
-	bool eventFilter(QObject *obj, QEvent *ev);
-	void changeEvent(QEvent *event);
+    bool eventFilter(QObject *obj, QEvent *ev);
+    void changeEvent(QEvent *event);
 
-	core::Modifier *currentModifier() const;
-	virtual void setConfigWidget(QWidget *widget) = 0;
-	virtual void currentModifierChanged(core::Modifier *modifier) {};
+    core::Modifier *currentModifier() const;
+    virtual void setConfigWidget(QWidget *widget) = 0;
+    virtual void currentModifierChanged(core::Modifier *modifier) {};
 
 private:
-	core::ModifierConfigWidget *_configWidget;
-	QMenu menuAddModifier;
-	QSignalMapper signalMapperAddModifier;
+    core::ModifierConfigWidget *_configWidget;
+    QMenu menuAddModifier;
+    QSignalMapper signalMapperAddModifier;
 
-	ModifierManager *_modifierManager;
-	ModifierModel *_modifierModel;
+    ModifierManager *_modifierManager;
+    ModifierModel *_modifierModel;
 
-	QRect modifierStateRect(const QModelIndex &index) const;
-	QRect modifierOnlyRect(const QModelIndex &index) const;
+    QRect modifierStateRect(const QModelIndex &index) const;
+    QRect modifierOnlyRect(const QModelIndex &index) const;
 
-	void retranslate();
+    void retranslate();
 
 private slots:
-	void on_pushButtonRemove_clicked();
-	void on_pushButtonUp_clicked();
-	void on_pushButtonDown_clicked();
-	void aboutToShowAddModifierMenu();
-	void currentModifierChanged(const QModelIndex &current, const QModelIndex &previous);
-	void widgetModifierChanged();
-	void modifiersInserted(const QModelIndex &parent, int start, int end);
+    void on_pushButtonRemove_clicked();
+    void on_pushButtonUp_clicked();
+    void on_pushButtonDown_clicked();
+    void aboutToShowAddModifierMenu();
+    void currentModifierChanged(const QModelIndex &current, const QModelIndex &previous);
+    void widgetModifierChanged();
+    void modifiersInserted(const QModelIndex &parent, int start, int end);
 };
 
 #endif

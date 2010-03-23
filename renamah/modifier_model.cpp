@@ -24,152 +24,152 @@
 #include "modifier_model.h"
 
 ModifierModel::ModifierModel(ModifierManager *manager)
-	: _manager(manager),
-	  _exclusiveModifier(0),
-	  _disableUndo(false)
+    : _manager(manager),
+    _exclusiveModifier(0),
+    _disableUndo(false)
 {
 }
 
 int ModifierModel::rowCount(const QModelIndex &parent) const
 {
-	return _modifiers.count();
+    return _modifiers.count();
 }
 
 int ModifierModel::columnCount(const QModelIndex &parent) const
 {
-	return columnNumber;
+    return columnNumber;
 }
 
 QVariant ModifierModel::data(const QModelIndex &index, int role) const
 {
-	if (!index.isValid() || index.row() < 0 || index.row() >= _modifiers.count())
-		return QVariant();
+    if (!index.isValid() || index.row() < 0 || index.row() >= _modifiers.count())
+        return QVariant();
 
-	const core::Modifier *modifier = _modifiers[index.row()];
-	switch (role)
-	{
-	case Qt::DisplayRole:
-		switch (index.column())
-		{
-		case colIndex: return index.row() + 1;
-		case colMode: return "";
-		case colCaption: return modifier->factory()->info().caption() + " [" + modifier->resume() + "]";
-		default:;
-		}
+    const core::Modifier *modifier = _modifiers[index.row()];
+    switch (role)
+    {
+    case Qt::DisplayRole:
+        switch (index.column())
+        {
+        case colIndex: return index.row() + 1;
+        case colMode: return "";
+        case colCaption: return modifier->factory()->info().caption() + " [" + modifier->resume() + "]";
+        default:;
+        }
 	case Qt::ForegroundRole:
-		if (_exclusiveModifier && _exclusiveModifier != modifier)
-			return Qt::gray;
-		break;
+        if (_exclusiveModifier && _exclusiveModifier != modifier)
+            return Qt::gray;
+        break;
 	default:;
 	}
-	return QVariant();
+    return QVariant();
 }
 
 QVariant ModifierModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-	switch (role)
-	{
-	case Qt::DisplayRole:
-		switch (section)
-		{
-		case colIndex: return tr("#");
-		case colMode: return tr("Mode");
-		case colCaption: return tr("Action");
-		default:;
-		}
-		break;
+    switch (role)
+    {
+    case Qt::DisplayRole:
+        switch (section)
+        {
+        case colIndex: return tr("#");
+        case colMode: return tr("Mode");
+        case colCaption: return tr("Action");
+        default:;
+        }
+        break;
 	default:;
 	}
-	return QVariant();
+    return QVariant();
 }
 
 void ModifierModel::init(core::Modifier *modifier) {
-	connect(modifier, SIGNAL(settingsChanging()), this, SLOT(modifierChanging()));
-	connect(modifier, SIGNAL(settingsChanged()), this, SLOT(modifierChanged()));
-	connect(modifier, SIGNAL(settingsChanged()), this, SIGNAL(modifiersChanged()));
+    connect(modifier, SIGNAL(settingsChanging()), this, SLOT(modifierChanging()));
+    connect(modifier, SIGNAL(settingsChanged()), this, SLOT(modifierChanged()));
+    connect(modifier, SIGNAL(settingsChanged()), this, SIGNAL(modifiersChanged()));
 }
 
 void ModifierModel::addModifier(core::Modifier *modifier)
 {
-	init(modifier);
+    init(modifier);
 
-	beginInsertRows(QModelIndex(), _modifiers.count(), _modifiers.count());
-	_modifiers << modifier;
-	_modifierStates[modifier] = true;
-	endInsertRows();
+    beginInsertRows(QModelIndex(), _modifiers.count(), _modifiers.count());
+    _modifiers << modifier;
+    _modifierStates[modifier] = true;
+    endInsertRows();
 
-	if (!_disableUndo) {
-		CreateModifierCommand *command = new CreateModifierCommand(this, _manager, modifier->factory()->info().name());
-		UndoManager::instance().push(command);
-		command->activate();
-	}
+    if (!_disableUndo) {
+        CreateModifierCommand *command = new CreateModifierCommand(this, _manager, modifier->factory()->info().name());
+        UndoManager::instance().push(command);
+        command->activate();
+    }
 
-	emit modifiersChanged();
+    emit modifiersChanged();
 }
 
 void ModifierModel::insertModifier(int index, core::Modifier *modifier) {
-	init(modifier);
+    init(modifier);
 
-	beginInsertRows(QModelIndex(), index, index);
-	_modifiers.insert(index, modifier);
-	_modifierStates[modifier] = true;
-	endInsertRows();
+    beginInsertRows(QModelIndex(), index, index);
+    _modifiers.insert(index, modifier);
+    _modifierStates[modifier] = true;
+    endInsertRows();
 
-	// TODO : integrate into the undo framework!!!
+    // TODO : integrate into the undo framework!!!
 
-	emit modifiersChanged();
+    emit modifiersChanged();
 }
 
 void ModifierModel::removeModifier(const QModelIndex &index)
 {
-	if (!index.isValid())
-		return;
+    if (!index.isValid())
+        return;
 
-	removeRows(index.row(), 1);
+    removeRows(index.row(), 1);
 }
 
 bool ModifierModel::modifierState(core::Modifier *modifier) const
 {
-	if (_modifierStates.find(modifier) == _modifierStates.end())
-		return false;
-	else
-		return _modifierStates[modifier];
+    if (_modifierStates.find(modifier) == _modifierStates.end())
+        return false;
+    else
+        return _modifierStates[modifier];
 }
 
 void ModifierModel::setModifierState(core::Modifier *modifier, bool state)
 {
-	int modifierRow = _modifiers.indexOf(modifier);
-	if (modifierRow < 0)
-		return;
+    int modifierRow = _modifiers.indexOf(modifier);
+    if (modifierRow < 0)
+        return;
 
-	if (_modifierStates[modifier] != state)
-	{
-		_modifierStates[modifier] = state;
-		emit dataChanged(index(modifierRow, 0), index(modifierRow, columnNumber - 1));
-		emit modifiersChanged();
-	}
+    if (_modifierStates[modifier] != state)
+    {
+        _modifierStates[modifier] = state;
+        emit dataChanged(index(modifierRow, 0), index(modifierRow, columnNumber - 1));
+        emit modifiersChanged();
+    }
 }
 
 void ModifierModel::toggleModifierState(core::Modifier *modifier)
 {
-	if (_modifierStates.find(modifier) == _modifierStates.end())
-		return;
+    if (_modifierStates.find(modifier) == _modifierStates.end())
+        return;
 
-	setModifierState(modifier, !_modifierStates[modifier]);
+    setModifierState(modifier, !_modifierStates[modifier]);
 }
 
 void ModifierModel::setExclusiveModifier(core::Modifier *modifier)
 {
-	if (_exclusiveModifier == modifier)
-		return;
+    if (_exclusiveModifier == modifier)
+        return;
 
-	_exclusiveModifier = modifier;
-	if (modifier)
-		_modifierStates[modifier] = true;
+    _exclusiveModifier = modifier;
+    if (modifier)
+        _modifierStates[modifier] = true;
 
-	// Refresh all
-	emit dataChanged(index(0, 0), index(rowCount() - 1, columnNumber - 1));
-	emit modifiersChanged();
+    // Refresh all
+    emit dataChanged(index(0, 0), index(rowCount() - 1, columnNumber - 1));
+    emit modifiersChanged();
 }
 
 /*QString ModifierModel::apply(const QString &str) const
@@ -188,196 +188,196 @@ void ModifierModel::setExclusiveModifier(core::Modifier *modifier)
 
 core::Modifier *ModifierModel::modifier(const QModelIndex &index) const
 {
-	if (!index.isValid())
-		return 0;
+    if (!index.isValid())
+        return 0;
 
-	return _modifiers[index.row()];
+    return _modifiers[index.row()];
 }
 
 Qt::ItemFlags ModifierModel::flags(const QModelIndex &index) const
 {
-	Qt::ItemFlags flags = QAbstractListModel::flags(index);
+    Qt::ItemFlags flags = QAbstractListModel::flags(index);
 
-     if (index.isValid())
-         return Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled | flags;
-     else
-         return Qt::ItemIsDropEnabled | flags;
+    if (index.isValid())
+        return Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled | flags;
+    else
+        return Qt::ItemIsDropEnabled | flags;
 }
 
 void ModifierModel::toggleExclusiveState(core::Modifier *modifier)
 {
-	if (_exclusiveModifier == modifier)
-		_exclusiveModifier = 0;
-	else
-		_exclusiveModifier = modifier;
+    if (_exclusiveModifier == modifier)
+        _exclusiveModifier = 0;
+    else
+        _exclusiveModifier = modifier;
 
-	if (_exclusiveModifier)
-		_modifierStates[_exclusiveModifier] = true;
+    if (_exclusiveModifier)
+        _modifierStates[_exclusiveModifier] = true;
 
-	// Refresh all
-	emit dataChanged(index(0, 0), index(rowCount() - 1, columnNumber - 1));
-	emit modifiersChanged();
+    // Refresh all
+    emit dataChanged(index(0, 0), index(rowCount() - 1, columnNumber - 1));
+    emit modifiersChanged();
 }
 
 Qt::DropActions ModifierModel::supportedDropActions() const {
-	return Qt::CopyAction;
+    return Qt::CopyAction;
 }
 
 bool ModifierModel::removeRows(int row, int count, const QModelIndex &parent) {
-	core::Modifier *modifierToRemove = modifier(index(row, 0));
+    core::Modifier *modifierToRemove = modifier(index(row, 0));
 
-	if (!_disableUndo) {
-		RemoveModifierCommand *command = new RemoveModifierCommand(this, _manager, row, modifierToRemove->factory()->info().name(),
-																   modifierToRemove->serializeProperties());
-		UndoManager::instance().push(command);
-		command->activate();
-	}
+    if (!_disableUndo) {
+        RemoveModifierCommand *command = new RemoveModifierCommand(this, _manager, row, modifierToRemove->factory()->info().name(),
+                                                                   modifierToRemove->serializeProperties());
+        UndoManager::instance().push(command);
+        command->activate();
+    }
 
-	beginRemoveRows(QModelIndex(), row, row);
+    beginRemoveRows(QModelIndex(), row, row);
 
-	_modifiers.removeAt(_modifiers.indexOf(modifierToRemove));
-	_modifierStates.remove(modifierToRemove);
-	if (_exclusiveModifier == modifierToRemove)
-		_exclusiveModifier = 0;
-	delete modifierToRemove;
+    _modifiers.removeAt(_modifiers.indexOf(modifierToRemove));
+    _modifierStates.remove(modifierToRemove);
+    if (_exclusiveModifier == modifierToRemove)
+        _exclusiveModifier = 0;
+    delete modifierToRemove;
 
-	endRemoveRows();
+    endRemoveRows();
 
-	emit modifiersChanged();
+    emit modifiersChanged();
 
-	return true;
+    return true;
 }
 
 #define MIMETYPE QLatin1String("filter-rows")
 
 QStringList ModifierModel::mimeTypes() const
 {
-	QStringList types;
-	types << MIMETYPE;
-	return types;
+    QStringList types;
+    types << MIMETYPE;
+    return types;
 }
 
 QMimeData *ModifierModel::mimeData(const QModelIndexList &indexes) const
 {
-	QMimeData *mimeData = new QMimeData;
-	QByteArray encodedData;
+    QMimeData *mimeData = new QMimeData;
+    QByteArray encodedData;
 
-	QDataStream stream(&encodedData, QIODevice::WriteOnly);
+    QDataStream stream(&encodedData, QIODevice::WriteOnly);
 
-	foreach (QModelIndex index, indexes) {
-		if (index.isValid()) {
-			stream << index.row();
-		}
-	}
+    foreach (QModelIndex index, indexes) {
+        if (index.isValid()) {
+            stream << index.row();
+        }
+    }
 
-	mimeData->setData(MIMETYPE, encodedData);
-	return mimeData;
+    mimeData->setData(MIMETYPE, encodedData);
+    return mimeData;
 }
 
 bool ModifierModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) {
-	if (action == Qt::IgnoreAction)
-		return false;
+    if (action == Qt::IgnoreAction)
+        return false;
 
-	QByteArray inData = data->data(MIMETYPE);
-	QDataStream stream(inData);
-	int sourceRow;
-	stream >> sourceRow;
+    QByteArray inData = data->data(MIMETYPE);
+    QDataStream stream(inData);
+    int sourceRow;
+    stream >> sourceRow;
 
-	int destinationRow = rowCount();
+    int destinationRow = rowCount();
 
-	if (row != -1) {
-		if (row >= rowCount()) {
-			destinationRow = rowCount();
-		} else {
-			if (sourceRow < row)
-				row--;
-			destinationRow = row;
-		}
-	} else if (parent.isValid()) {
-		destinationRow = parent.row();
-	} else if (!parent.isValid()) {
-		destinationRow = rowCount();
-	}
+    if (row != -1) {
+        if (row >= rowCount()) {
+            destinationRow = rowCount();
+        } else {
+            if (sourceRow < row)
+                row--;
+            destinationRow = row;
+        }
+    } else if (parent.isValid()) {
+        destinationRow = parent.row();
+    } else if (!parent.isValid()) {
+        destinationRow = rowCount();
+    }
 
-	moveModifier(sourceRow, destinationRow);
+    moveModifier(sourceRow, destinationRow);
 
-	return false;
+    return false;
 }
 
 void ModifierModel::clear() {
-	_exclusiveModifier = 0;
-	qDeleteAll(_modifiers);
-	_modifiers.clear();
-	_modifierStates.clear();
-	reset();
-	emit modifiersChanged();
+    _exclusiveModifier = 0;
+    qDeleteAll(_modifiers);
+    _modifiers.clear();
+    _modifierStates.clear();
+    reset();
+    emit modifiersChanged();
 }
 
 void ModifierModel::modifierChanged() {
-	if (_disableUndo)
-		return;
+    if (_disableUndo)
+        return;
 
-	core::Modifier *modifier = static_cast<core::Modifier*>(sender());
+    core::Modifier *modifier = static_cast<core::Modifier*>(sender());
 
-	// Undo managing => compute the diff
-	QMap<QString,QPair<QString,QVariant> > newProperties = modifier->serializeProperties();
-	QMap<QString,QPair<QString,QVariant> > &oldProperties = _changingModifierOldProperties;
-	QMap<QString,QPair<QString,QVariant> > undoProperties, redoProperties;
+    // Undo managing => compute the diff
+    QMap<QString,QPair<QString,QVariant> > newProperties = modifier->serializeProperties();
+    QMap<QString,QPair<QString,QVariant> > &oldProperties = _changingModifierOldProperties;
+    QMap<QString,QPair<QString,QVariant> > undoProperties, redoProperties;
 
-	foreach (const QString &propName, newProperties.keys()) {
-		QPair<QString,QVariant> &newPair = newProperties[propName];
-		QPair<QString,QVariant> &oldPair = oldProperties[propName];
+    foreach (const QString &propName, newProperties.keys()) {
+        QPair<QString,QVariant> &newPair = newProperties[propName];
+        QPair<QString,QVariant> &oldPair = oldProperties[propName];
 
-		if (newPair != oldPair) {
-			undoProperties.insert(propName, oldPair);
-			redoProperties.insert(propName, newPair);
-		}
-	}
+        if (newPair != oldPair) {
+            undoProperties.insert(propName, oldPair);
+            redoProperties.insert(propName, newPair);
+        }
+    }
 
-	ModifyModifierCommand *command = new ModifyModifierCommand(this, _modifiers.indexOf(modifier), undoProperties, redoProperties);
-	UndoManager::instance().push(command);
-	command->activate();
+    ModifyModifierCommand *command = new ModifyModifierCommand(this, _modifiers.indexOf(modifier), undoProperties, redoProperties);
+    UndoManager::instance().push(command);
+    command->activate();
 }
 
 void ModifierModel::modifierChanging() {
-	if (_disableUndo)
-		return;
+    if (_disableUndo)
+        return;
 
-	core::Modifier *modifier = static_cast<core::Modifier*>(sender());
+    core::Modifier *modifier = static_cast<core::Modifier*>(sender());
 
-	_changingModifierOldProperties = modifier->serializeProperties();
+    _changingModifierOldProperties = modifier->serializeProperties();
 }
 
 void ModifierModel::beginUndoAction() {
-	_disableUndo = true;
+    _disableUndo = true;
 }
 
 void ModifierModel::endUndoAction() {
-	_disableUndo = false;
+    _disableUndo = false;
 }
 
 void ModifierModel::moveModifier(int sourceRow, int destinationRow) {
-	Q_ASSERT_X(sourceRow >= 0 && sourceRow < rowCount(), "ModifierModel::moveModifier()", qPrintable(QString("<sourceRow> is out of bound: %d!").arg(sourceRow)));
+    Q_ASSERT_X(sourceRow >= 0 && sourceRow < rowCount(), "ModifierModel::moveModifier()", qPrintable(QString("<sourceRow> is out of bound: %d!").arg(sourceRow)));
 
-	if (sourceRow == destinationRow) // Save destination => do nothing
-		return;
+    if (sourceRow == destinationRow) // Save destination => do nothing
+        return;
 
-	if (destinationRow >= rowCount() - 1 &&
-		sourceRow == rowCount() - 1) // Already at the list queue => do nothing
-		return;
+    if (destinationRow >= rowCount() - 1 &&
+        sourceRow == rowCount() - 1) // Already at the list queue => do nothing
+        return;
 
-	beginRemoveRows(QModelIndex(), sourceRow, sourceRow);
-	core::Modifier *modifier = _modifiers.takeAt(sourceRow);
-	endRemoveRows();
-	beginInsertRows(QModelIndex(), destinationRow, destinationRow);
-	_modifiers.insert(destinationRow, modifier);
-	endInsertRows();
+    beginRemoveRows(QModelIndex(), sourceRow, sourceRow);
+    core::Modifier *modifier = _modifiers.takeAt(sourceRow);
+    endRemoveRows();
+    beginInsertRows(QModelIndex(), destinationRow, destinationRow);
+    _modifiers.insert(destinationRow, modifier);
+    endInsertRows();
 
-	emit modifiersChanged();
+    emit modifiersChanged();
 
-	if (!_disableUndo) {
-		MoveModifierCommand *command = new MoveModifierCommand(this, sourceRow, destinationRow);
-		UndoManager::instance().push(command);
-		command->activate();
-	}
+    if (!_disableUndo) {
+        MoveModifierCommand *command = new MoveModifierCommand(this, sourceRow, destinationRow);
+        UndoManager::instance().push(command);
+        command->activate();
+    }
 }

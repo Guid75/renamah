@@ -22,8 +22,8 @@ FilterManager *FilterManager::_instance = 0;
 
 FilterManager &FilterManager::instance()
 {
-	if (!_instance)
-          _instance = new FilterManager;
+    if (!_instance)
+        _instance = new FilterManager;
 
-     return *_instance;
+    return *_instance;
 }

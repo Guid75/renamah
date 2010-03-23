@@ -23,9 +23,9 @@
 
 class SimpleDirModel : public QDirModel
 {
-     Q_OBJECT
+    Q_OBJECT
 public:
-     int columnCount(const QModelIndex & parent = QModelIndex()) const;
+    int columnCount(const QModelIndex & parent = QModelIndex()) const;
 };
 
 #endif

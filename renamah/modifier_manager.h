@@ -24,17 +24,17 @@
 class ModifierManager
 {
 public:
-     void addFactory(core::ModifierFactory *factory);
+    void addFactory(core::ModifierFactory *factory);
 
-     core::ModifierFactory *factoryByName(const QString &name) const;
+    core::ModifierFactory *factoryByName(const QString &name) const;
 
-     const QList<core::ModifierFactory*> &factories() const { return _factories; }
+    const QList<core::ModifierFactory*> &factories() const { return _factories; }
 
-	/*! Returns the type name of the modifier created by the factory */
-	virtual QString modifierTypeName() = 0;
+    /*! Returns the type name of the modifier created by the factory */
+    virtual QString modifierTypeName() = 0;
 
 private:
-     QList<core::ModifierFactory*> _factories;
+    QList<core::ModifierFactory*> _factories;
 };
 
 #endif

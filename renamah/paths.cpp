@@ -30,7 +30,7 @@ QString Paths::sharePath()
 
     if (Global::devMode()) {
         return QDir(appDir.filePath("../share/renamah")).canonicalPath();
-	}
+    }
 
     if (Global::localMode())
         return appDir.absolutePath();
@@ -49,7 +49,7 @@ QString Paths::libPath()
 
     if (Global::devMode()) {
         return QDir(appDir.filePath("../lib/renamah")).canonicalPath();
-	}
+    }
 
     if (Global::localMode())
         return appDir.absolutePath();

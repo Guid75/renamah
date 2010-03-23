@@ -25,16 +25,16 @@
 
 class WidgetActions : public WidgetModifiers
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	WidgetActions(QWidget *parent = 0);
+    WidgetActions(QWidget *parent = 0);
 
 protected:
-	void setConfigWidget(QWidget *widget);
+    void setConfigWidget(QWidget *widget);
 
 private:
-	QScrollArea *scrollAreaGeneral;
+    QScrollArea *scrollAreaGeneral;
 };
 
 #endif

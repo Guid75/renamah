@@ -25,34 +25,34 @@
 
 class WidgetExtensionPolicy : public QWidget, private Ui::WidgetExtensionPolicy
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	WidgetExtensionPolicy(QWidget *parent = 0);
+    WidgetExtensionPolicy(QWidget *parent = 0);
 
-	const ExtensionPolicy &extensionPolicy() const { return _extensionPolicy; }
-	void setExtensionPolicy(const ExtensionPolicy &policy);
+    const ExtensionPolicy &extensionPolicy() const { return _extensionPolicy; }
+    void setExtensionPolicy(const ExtensionPolicy &policy);
 
 signals:
-	void extensionPolicyChanged();
+    void extensionPolicyChanged();
 
 protected:
-	void changeEvent(QEvent *event);
+    void changeEvent(QEvent *event);
 
 private:
-	ExtensionPolicy _extensionPolicy;
+    ExtensionPolicy _extensionPolicy;
 
-	void refreshControls();
+    void refreshControls();
 
 private slots:
-	void on_radioButtonFilterBasename_toggled(bool checked);
-	void on_radioButtonFilterAll_toggled(bool checked);
-	void on_radioButtonFilterExtension_toggled(bool checked);
-	void on_radioButtonExtensionDefinitionLastPoint_toggled(bool checked);
-	void on_radioButtonExtensionDefinitionFirstPoint_toggled(bool checked);
-	void on_radioButtonExtensionDefinitionNthPoint_toggled(bool checked);
-	void on_spinBoxExtensionNthPoint_valueChanged(int value);
-	void on_pushButtonReset_clicked();
+    void on_radioButtonFilterBasename_toggled(bool checked);
+    void on_radioButtonFilterAll_toggled(bool checked);
+    void on_radioButtonFilterExtension_toggled(bool checked);
+    void on_radioButtonExtensionDefinitionLastPoint_toggled(bool checked);
+    void on_radioButtonExtensionDefinitionFirstPoint_toggled(bool checked);
+    void on_radioButtonExtensionDefinitionNthPoint_toggled(bool checked);
+    void on_spinBoxExtensionNthPoint_valueChanged(int value);
+    void on_pushButtonReset_clicked();
 };
 
 #endif

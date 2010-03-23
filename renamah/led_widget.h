@@ -23,13 +23,13 @@
 
 class LedWidget : public QWidget
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	LedWidget(QWidget *parent = 0) : QWidget(parent) {}
+    LedWidget(QWidget *parent = 0) : QWidget(parent) {}
 
 protected:
-	void paintEvent(QPaintEvent *event);
+    void paintEvent(QPaintEvent *event);
 };
 
 #endif

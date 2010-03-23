@@ -26,33 +26,33 @@
 
 class FilterModel : public ModifierModel
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	static FilterModel &instance();
+    static FilterModel &instance();
 
-	/*! Returns the filtered result of the file path parameter */
-	QString apply(const QString &filePath, int fileIndex) const;
+    /*! Returns the filtered result of the file path parameter */
+    QString apply(const QString &filePath, int fileIndex) const;
 
-	void clear();
+    void clear();
 
-	const ExtensionPolicy &extensionPolicy() const { return _extensionPolicy; }
-	void setExtensionPolicy(const ExtensionPolicy &policy);
+    const ExtensionPolicy &extensionPolicy() const { return _extensionPolicy; }
+    void setExtensionPolicy(const ExtensionPolicy &policy);
 
-	bool isLocalExtensionPolicyEnabled(core::Filter *filter) const;
-	void setLocalExtensionPolicyEnabled(core::Filter *filter, bool state);
+    bool isLocalExtensionPolicyEnabled(core::Filter *filter) const;
+    void setLocalExtensionPolicyEnabled(core::Filter *filter, bool state);
 
-	ExtensionPolicy localExtensionPolicy(core::Filter *filter) const;
-	void setLocalExtensionPolicy(core::Filter *filter, const ExtensionPolicy &policy);
+    ExtensionPolicy localExtensionPolicy(core::Filter *filter) const;
+    void setLocalExtensionPolicy(core::Filter *filter, const ExtensionPolicy &policy);
 
 private:
-	FilterModel();
+    FilterModel();
 
-	static FilterModel *_instance;
+    static FilterModel *_instance;
 
-	ExtensionPolicy _extensionPolicy;
-	QMap<core::Filter*, ExtensionPolicy> localExtensionPolicies;
-	QMap<core::Filter*, bool> localExtensionPolicyStates;
+    ExtensionPolicy _extensionPolicy;
+    QMap<core::Filter*, ExtensionPolicy> localExtensionPolicies;
+    QMap<core::Filter*, bool> localExtensionPolicyStates;
 };
 
 #endif

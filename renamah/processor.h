@@ -24,48 +24,48 @@
 
 class Processor : public QThread
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	enum DestinationOperation {
-		Rename,
-		Copy,
-		Move,
-		SymLink
-	};
+    enum DestinationOperation {
+        Rename,
+        Copy,
+        Move,
+        SymLink
+    };
 
-	static Processor &instance();
+    static Processor &instance();
 
-	void clearTasks();
-	void addTask(const QString &oldFileName, const QString &newFileName);
-	bool hasTasks() const { return tasks.count(); }
+    void clearTasks();
+    void addTask(const QString &oldFileName, const QString &newFileName);
+    bool hasTasks() const { return tasks.count(); }
 
-	DestinationOperation destinationOperation() const { return _destinationOperation; }
-	void setDestinationOperation(DestinationOperation operation);
-	QString destinationOperationName() const;
-	const QString &destinationDir() const { return _destinationDir; }
-	void setDestinationDir(const QString &dir);
+    DestinationOperation destinationOperation() const { return _destinationOperation; }
+    void setDestinationOperation(DestinationOperation operation);
+    QString destinationOperationName() const;
+    const QString &destinationDir() const { return _destinationDir; }
+    void setDestinationDir(const QString &dir);
 
-	void go();
+    void go();
 
 signals:
-	void taskSuccess(const QString &original, const QString &renamed);
-	void taskFailure(const QString &original, const QString &renamed, const QString &errorMsg);
-	void percentProgress(int percent);
+    void taskSuccess(const QString &original, const QString &renamed);
+    void taskFailure(const QString &original, const QString &renamed, const QString &errorMsg);
+    void percentProgress(int percent);
 
 protected:
-	void run();
+    void run();
 
 private:
-	static Processor *_instance;
-	QList<QPair<QString,QString> > tasks;
-//	QList<QPair<QString,QString> > failed;
-//	QList<QPair<QString,QString> > succeed;
-	int _lastPercent;
-	DestinationOperation _destinationOperation;
-	QString _destinationDir;
+    static Processor *_instance;
+    QList<QPair<QString,QString> > tasks;
+    //	QList<QPair<QString,QString> > failed;
+    //	QList<QPair<QString,QString> > succeed;
+    int _lastPercent;
+    DestinationOperation _destinationOperation;
+    QString _destinationDir;
 
-	Processor(QObject *parent = 0);
+    Processor(QObject *parent = 0);
 };
 
 #endif
