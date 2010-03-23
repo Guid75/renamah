@@ -27,6 +27,8 @@ cmake .
 make
 sudo make install
 
+If you just want to execute renamah from the generated build dir in the source directory, just create an empty file named "dev" beside the binary.
+
 ------------
 DEPENDENCIES
 ------------

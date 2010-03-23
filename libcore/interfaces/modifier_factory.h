@@ -29,7 +29,7 @@ namespace core
 	class ModifierFactory : public Plugin
 	{
 	public:
-		/*! Make a new modifier. Just a call to createModifier() and some parentality done */
+                /*! Make a new modifier. Just a call to createModifier() and some parentality don */
 		Modifier *makeModifier() const {
 			Modifier *modifier = createModifier();
 			modifier->_factory = const_cast<ModifierFactory*>(this);
