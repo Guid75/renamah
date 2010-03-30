@@ -9,3 +9,4 @@ CMakeCache.txt
 cmake_install.cmake
 bin/renamah
 bin/libcore.so
+CMakeLists.txt.user
