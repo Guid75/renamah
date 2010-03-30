@@ -93,8 +93,7 @@ ADD_DEPENDENCIES(renamah translations_renamah)
 
 TARGET_LINK_LIBRARIES(
   renamah renamahcore ${QT_LIBRARIES}
-  )
-
+)
 
 INSTALL(TARGETS renamah
   RUNTIME DESTINATION bin)

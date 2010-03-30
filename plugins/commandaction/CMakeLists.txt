@@ -38,9 +38,9 @@ ADD_CUSTOM_TARGET(translations_commandaction DEPENDS ${QM_FILES})
 
 ADD_LIBRARY(commandaction SHARED ${COMMANDACTION_SOURCES} ${COMMANDACTION_FORMS_H} ${COMMANDACTION_MOC})
 
-IF(MSVC)
-  TARGET_LINK_LIBRARIES(commandaction core ${QT_LIBRARIES})
-ENDIF(MSVC)
+IF(WIN32)
+  TARGET_LINK_LIBRARIES(commandaction renamahcore ${QT_LIBRARIES})
+ENDIF(WIN32)
 
 ADD_DEPENDENCIES(commandaction translations_commandaction)
 

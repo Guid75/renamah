@@ -33,9 +33,9 @@ SET(LIBRARY_OUTPUT_PATH ${RENAMAH_BINARY_DIR}/lib/renamah/plugins)
 
 ADD_LIBRARY(numberingfilter SHARED ${NUMBERINGFILTER_SOURCES} ${NUMBERINGFILTER_FORMS_H} ${NUMBERINGFILTER_MOC})
 
-IF(MSVC)
-  TARGET_LINK_LIBRARIES(numberingfilter core ${QT_LIBRARIES})
-ENDIF(MSVC)
+IF(WIN32)
+  TARGET_LINK_LIBRARIES(numberingfilter renamahcore ${QT_LIBRARIES})
+ENDIF(WIN32)
 
 ADD_DEPENDENCIES(numberingfilter translations_numberingfilter)
 
