@@ -28,9 +28,8 @@ QString Paths::sharePath()
 {
     QDir appDir(QCoreApplication::applicationDirPath());
 
-    if (Global::devMode()) {
+    if (Global::devMode())
         return QDir(appDir.filePath("../share/renamah")).canonicalPath();
-    }
 
     if (Global::localMode())
         return appDir.absolutePath();

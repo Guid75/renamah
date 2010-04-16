@@ -118,7 +118,7 @@ void WidgetModifiers::aboutToShowAddModifierMenu() {
 
 void WidgetModifiers::addModifier(const QString &factoryName) {
     core::ModifierFactory *factory = _modifierManager->factoryByName(factoryName);
-    Q_ASSERT_X(factory, "WidgetModifiers::addModifierClicked()", "<factoryName> seems to have no factory correspondant");
+    Q_ASSERT_X(factory, "WidgetModifiers::addModifierClicked()", qPrintable(QString("%1 factory not found, maybe a plugin location problem").arg(factoryName)));
 
     _modifierModel->addModifier(factory->makeModifier());
     stackedWidgetConfiguration->setCurrentWidget(pageConfiguration);
